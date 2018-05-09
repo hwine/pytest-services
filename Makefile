@@ -38,6 +38,9 @@ clean-cache: check_venv
 clean-python:
 	find . -type d -name venv -prune -o -type d -name __pycache__ -print0 | xargs -0 rm -rf
 
+clean-python: check_venv
+	find . -type d -name venv -prune -o -type d -name __pycache__ -print0 | xargs -0 rm -rf
+
 doctest: check_venv
 	pytest --doctest-modules -s --offline --debug-calls --ignore pagerduty/
 
