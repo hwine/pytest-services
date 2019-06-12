@@ -1,5 +1,9 @@
-# from herokuadmintools import verify_access, session
-from herokuadmintools import find_users_missing_2fa, find_affected_apps
+import json
+
+from herokuadmintools import get_users
+
+# ToDo:
+#  - make cache work
 
 
 def cache_key(organization, method, *args, **kwargs):
@@ -57,9 +61,22 @@ def get_heroku_resource(
 
     if result is None:
         # convert from defaultdict with values as sets
-        users = {k: list(v) for k, v in find_users_missing_2fa(organization).items()}
-        apps = {k: list(v) for k, v in find_affected_apps(users, organization).items()}
-        result = [{HerokuDataSets.ROLE_USER: users, HerokuDataSets.APP_USER: apps}]
+        # each user is a dict as described here:
+        #  https://devcenter.heroku.com/articles/platform-api-reference#team-member
+        # import pudb; pudb.set_trace()
+        users = list(get_users(organization))
+        ##role_users = {k: list(v) for k, v in
+        ##        find_users_missing_2fa(organization).items()}
+        ## App data collection takes forever -- don't get unless needed
+        ##apps = {k: list(v) for k, v in
+        ##        find_affected_apps(users, organization).items()}
+        result = [
+            {
+                # HerokuDataSets.ROLE_USER: users,
+                # HerokuDataSets.APP_USER: apps,
+                HerokuDataSets.USER: users
+            }
+        ]
 
         if cache is not None:
             if debug_cache:
@@ -75,6 +92,7 @@ class HerokuDataSets:
     # libraries when we use the enums as dict keys
     ROLE_USER = 1  # tuple of (role, user)
     APP_USER = 2  # tuple of (app, user)
+    USER = 3  # list of dicts with JSON response fields
 
 
 class HerokuAdminClient:
@@ -168,26 +186,6 @@ class HerokuAdminClient:
             tmp.append(keyed_result)
 
         self.results = tmp
-        return self
-
-    def flatten(self):
-        """
-        Flattens one level of a nested list:
-
-        >>> c = HerokuAdminClient([None], None, None, None, offline=True)
-        >>> c.results = [['A', 1], ['B']]
-        >>> c.flatten().values()
-        ['A', 1, 'B']
-
-        Only works for a list of lists:
-
-        >>> c.results = [{'A': 1}, {'B': 2}]
-        >>> c.flatten().values()
-        Traceback (most recent call last):
-        ...
-        TypeError: can only concatenate list (not "dict") to list
-        """
-        self.results = sum(self.results, [])
         return self
 
     def debug(self):
