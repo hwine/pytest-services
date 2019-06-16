@@ -36,14 +36,15 @@ def users(raw_json_data):
     return members
 
 
-@pytest.mark.parametrize("a_user", list(users(raw_json_data())))
-def test_mozilla_user(a_user):
-    # print(type(a_user), str(a_user))
-    email = a_user["email"]
-    if a_user["federated"]:
+# expose email as explicit parameter to make parametrized test names useful
+@pytest.mark.parametrize(
+    "email, account", [(x["email"], x) for x in users(raw_json_data())]
+)
+def test_mozilla_user(email, account):
+    if account["federated"]:
         assert not email.startswith("heroku")
         assert email.endswith("@mozilla.com")
-    elif a_user["two_factor_authentication"]:
+    elif account["two_factor_authentication"]:
         # may have @m.c if starts with "heroku-"
         if email.endswith("@mozilla.com"):
             assert email.startswith("heroku")
