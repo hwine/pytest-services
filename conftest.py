@@ -155,6 +155,7 @@ METADATA_KEYS = [
     "id",
     "members",
     "role",
+    'org', 'repo', 'branch', 'date',
 ]
 
 
