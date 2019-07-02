@@ -155,7 +155,11 @@ METADATA_KEYS = [
     "id",
     "members",
     "role",
-    'org', 'repo', 'branch', 'date',
+    # used for GitHub compliance
+    'org',
+    'repo',
+    'branch',
+    'date',
 ]
 
 
@@ -192,8 +196,13 @@ def extract_metadata(resource):
     }
 
 
+# it's only considered metadata if both:
+#  - the argument is a dictionary, AND
+#  - a key is in the list of METADATA_KEYS
 def get_metadata_from_funcargs(funcargs):
     metadata = {}
+    # also search **kwargs of calling func
+    metadata.update(**extract_metadata(funcargs))
     for k in funcargs:
         if isinstance(funcargs[k], dict):
             metadata = {**metadata, **extract_metadata(funcargs[k])}
@@ -254,13 +263,11 @@ def pytest_runtest_makereport(item, call):
     report = outcome.get_result()
 
     # only add this during call instead of during any stage
-    if report.when == "call" and not isinstance(item, DoctestItem):
-        metadata = get_metadata(item.funcargs)
-        markers = {n.name: serialize_marker(n) for n in get_node_markers(item)}
-        severity = markers.get("severity", None) and markers.get("severity")["args"][0]
-        regression = (
-            markers.get("regression", None) and markers.get("regression")["args"][0]
-        )
+    if report.when == 'call' and not isinstance(item, DoctestItem):
+        metadata = get_metadata_from_funcargs(item.funcargs)
+        markers = {k: serialize_marker(v) for (k, v) in get_node_markers(item).items()}
+        severity = markers.get('severity', None) and markers.get('severity')['args'][0]
+        regression = markers.get('regression', None) and markers.get('regression')['args'][0]
         outcome, reason = get_outcome_and_reason(report, markers, call)
         rationale = markers.get("rationale", None) and clean_docstring(
             markers.get("rationale")["args"][0]
