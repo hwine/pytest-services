@@ -35,16 +35,19 @@ def pytest_addoption(parser):
         help="Set GCP project to test. Required for GCP tests.",
     )
 
+    parser.addoption(
+        "--heroku-organization",
+        default="mozillacorporation",
+        type=str,
+        help="Set Heroku organization (aka team) to test.",
+    )
 
-    parser.addoption('--heroku-organization',
-                     default="mozillacorporation",
-                     type=str,
-                     help='Set Heroku organization (aka team) to test.')
-
-    parser.addoption('--github-organization',
-                     default="mozilla-services",
-                     type=str,
-                     help='Set GitHub organization to test.')
+    parser.addoption(
+        "--github-organization",
+        default="mozilla-services",
+        type=str,
+        help="Set GitHub organization to test.",
+    )
 
     parser.addoption(
         "--debug-calls", action="store_true", help="Log API calls. Requires -s"
@@ -67,16 +70,16 @@ def pytest_addoption(parser):
         "--config", type=argparse.FileType("r"), help="Path to the config file."
     )
 
+    parser.addoption(
+        "--date",
+        type=str,
+        default=datetime.datetime.utcnow().strftime("%Y-%m-%d"),
+        help="Date to test, defaults to UTC now.",
+    )
 
-    parser.addoption('--date',
-                     type=str,
-                     default=datetime.datetime.utcnow().strftime('%Y-%m-%d'),
-                     help='Date to test, defaults to UTC now.')
-
-    parser.addoption('--data-dir',
-                     type=str,
-                     default=".",
-                     help='Where to expect & store files.')
+    parser.addoption(
+        "--data-dir", type=str, default=".", help="Where to expect & store files."
+    )
 
 
 def pytest_configure(config):
@@ -91,8 +94,8 @@ def pytest_configure(config):
 
     profiles = config.getoption("--aws-profiles")
     project_id = config.getoption("--gcp-project-id")
-    heroku_organization = config.getoption('--heroku-organization')
-    github_organization = config.getoption('--github-organization')
+    heroku_organization = config.getoption("--heroku-organization")
+    github_organization = config.getoption("--github-organization")
 
     botocore_client = BotocoreClient(
         profiles=profiles,
@@ -114,14 +117,15 @@ def pytest_configure(config):
         organization=heroku_organization,
         # cache=config.cache,
         cache=None,
-        debug_calls=config.getoption('--debug-calls'),
-        debug_cache=config.getoption('--debug-cache'),
-        offline=config.getoption('--offline'))
+        debug_calls=config.getoption("--debug-calls"),
+        debug_cache=config.getoption("--debug-cache"),
+        offline=config.getoption("--offline"),
+    )
 
     github_client = GitHubClient(
         organization=github_organization,
-        report_date=config.getoption('--date'),
-        data_dir=config.getoption('--data-dir'),
+        report_date=config.getoption("--date"),
+        data_dir=config.getoption("--data-dir"),
         # cache=config.cache,
         cache=None,
         debug_calls=config.getoption("--debug-calls"),
@@ -183,10 +187,10 @@ METADATA_KEYS = [
     "members",
     "role",
     # used for GitHub compliance
-    'org',
-    'repo',
-    'branch',
-    'date',
+    "org",
+    "repo",
+    "branch",
+    "date",
 ]
 
 
@@ -290,12 +294,14 @@ def pytest_runtest_makereport(item, call):
     report = outcome.get_result()
 
     # only add this during call instead of during any stage
-    if report.when == 'call' and not isinstance(item, DoctestItem):
+    if report.when == "call" and not isinstance(item, DoctestItem):
         metadata = get_metadata_from_funcargs(item.funcargs)
-        #import pudb; pudb.set_trace()
+        # import pudb; pudb.set_trace()
         markers = {k: serialize_marker(v) for (k, v) in get_node_markers(item).items()}
-        severity = markers.get('severity', None) and markers.get('severity')['args'][0]
-        regression = markers.get('regression', None) and markers.get('regression')['args'][0]
+        severity = markers.get("severity", None) and markers.get("severity")["args"][0]
+        regression = (
+            markers.get("regression", None) and markers.get("regression")["args"][0]
+        )
         outcome, reason = get_outcome_and_reason(report, markers, call)
         rationale = markers.get("rationale", None) and clean_docstring(
             markers.get("rationale")["args"][0]
