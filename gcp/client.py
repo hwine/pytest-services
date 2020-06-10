@@ -115,9 +115,7 @@ class GCPClient:
         Differing heavily from AWS, most GCP services do not take zones into account with API
         calls and such.
         """
-        if product == "compute" and subproduct == "instances":
-            return True
-        return False
+        return product == "compute" and subproduct == "instances"
 
     def _list_zones(self):
         """Internal helper for listing all zones"""

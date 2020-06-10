@@ -171,11 +171,7 @@ class BotocoreClient:
         self.debug_cache = debug_cache
         self.offline = offline
 
-        if offline:
-            self.regions = ["us-east-1"]
-        else:
-            self.regions = get_available_regions()
-
+        self.regions = ["us-east-1"] if offline else get_available_regions()
         self.results = []
 
     def get_regions(self):

@@ -96,15 +96,9 @@ def user_is_inactive(iam_user, no_activity_since, created_after):
     ):
         return False
 
-    if (
-        is_credential_active(
+    return not is_credential_active(
             iam_user["password_enabled"], iam_user["password_last_used"]
-        )
-        and parse(iam_user["password_last_used"]) > no_activity_since
-    ):
-        return False
-
-    return True
+        ) or parse(iam_user["password_last_used"]) <= no_activity_since
 
 
 def is_credential_active(credential_active, credential_last_used):

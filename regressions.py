@@ -108,9 +108,9 @@ def add_regression_marker(item):
     test_regressions = item.config.custom_config.regressions.get(
         item.originalname, None
     )
-    test_id = item._genid
-
     if test_regressions:
+        test_id = item._genid
+
         for regression_test_id in test_regressions:
             if regression_test_id.startswith("*"):
                 substring = regression_test_id[1:]

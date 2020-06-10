@@ -237,7 +237,10 @@ def iam_access_keys_for_user(username):
 
 def iam_get_all_access_keys():
     return sum(
-        [iam_access_keys_for_user(username=user["UserName"]) for user in iam_users()],
+        (
+            iam_access_keys_for_user(username=user["UserName"])
+            for user in iam_users()
+        ),
         [],
     )
 
@@ -292,22 +295,16 @@ def iam_admin_users_with_credential_report():
 
 def user_is_admin(user):
     for policy in user["Policies"]:
-        if isinstance(policy, dict):
-            if (
-                policy.get("PolicyName", "")
-                in pytest.config.custom_config.aws.admin_policies
-            ):
-                return True
+        if isinstance(policy, dict) and (
+            policy.get("PolicyName", "")
+            in pytest.config.custom_config.aws.admin_policies
+        ):
+            return True
 
-    for group in user.get("Groups", []):
-        if isinstance(group, dict):
-            if (
+    return any(isinstance(group, dict) and (
                 group.get("GroupName", "")
                 in pytest.config.custom_config.aws.admin_groups
-            ):
-                return True
-
-    return False
+            ) for group in user.get("Groups", []))
 
 
 def get_all_users_that_can_access_aws_account():

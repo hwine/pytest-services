@@ -127,9 +127,9 @@ def add_xfail_marker(item):
         return
 
     test_exemptions = item.config.custom_config.exemptions.get(item.originalname, None)
-    test_id = item._genid
-
     if test_exemptions:
+        test_id = item._genid
+
         # Check for any substring matchers
         for exemption_test_id in test_exemptions:
             if exemption_test_id.startswith("*"):

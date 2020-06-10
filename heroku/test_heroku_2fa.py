@@ -32,20 +32,20 @@ def affected_apps():
 
 @pytest.fixture
 def role_user():
-    result = [
-        (role, email) for role, emails in affected_users().items() for email in emails
-    ]
     # assert len(result) > 0
-    return result
+    return [
+        (role, email)
+        for role, emails in affected_users().items()
+        for email in emails
+    ]
 
 
 @pytest.fixture
 def app_user():
-    result = [
+    # assert len(result) > 0
+    return [
         (app, email) for app, emails in affected_apps().items() for email in emails
     ]
-    # assert len(result) > 0
-    return result
 
 
 # ##def pytest_generate_tests(metafunc):

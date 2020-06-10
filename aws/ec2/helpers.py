@@ -24,10 +24,7 @@ def ip_permission_opens_all_ports(ipp):
     if from_port == -1 or to_port == -1:
         return True
 
-    if ipp["FromPort"] <= 1 and ipp["ToPort"] >= 65535:
-        return True
-
-    return False
+    return ipp["FromPort"] <= 1 and ipp["ToPort"] >= 65535
 
 
 def ip_permission_cidr_allows_all_ips(ipp):
@@ -52,11 +49,10 @@ def ip_permission_cidr_allows_all_ips(ipp):
         if ip_range.get("CidrIp", "") == "0.0.0.0/0":
             return True
 
-    for ip_range in ipp.get("Ipv6Ranges", []):
-        if ip_range.get("CidrIpv6", "") == "::/0":
-            return True
-
-    return False
+    return any(
+        ip_range.get("CidrIpv6", "") == "::/0"
+        for ip_range in ipp.get("Ipv6Ranges", [])
+    )
 
 
 def ip_permission_grants_access_to_group_with_id(ipp, security_group_id):
@@ -73,11 +69,10 @@ def ip_permission_grants_access_to_group_with_id(ipp, security_group_id):
     >>> ip_permission_grants_access_to_group_with_id({}, 'test-sgid')
     False
     """
-    for user_id_group_pair in ipp.get("UserIdGroupPairs", []):
-        if user_id_group_pair.get("GroupId", None) == security_group_id:
-            return True
-
-    return False
+    return any(
+        user_id_group_pair.get("GroupId", None) == security_group_id
+        for user_id_group_pair in ipp.get("UserIdGroupPairs", [])
+    )
 
 
 def ec2_security_group_opens_all_ports(ec2_security_group):
@@ -304,5 +299,5 @@ def ec2_instance_missing_tag_names(ec2_instance, required_tag_names):
     frozenset({'Name'})
     """
     tags = ec2_instance.get("Tags", [])
-    instance_tag_names = set(tag["Key"] for tag in tags if "Key" in tag)
+    instance_tag_names = {tag["Key"] for tag in tags if "Key" in tag}
     return required_tag_names - instance_tag_names

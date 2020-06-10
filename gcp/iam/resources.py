@@ -21,5 +21,4 @@ def service_account_keys(service_account):
 
 def all_service_account_keys():
     for sa in service_accounts():
-        for key in service_account_keys(sa):
-            yield key
+        yield from service_account_keys(sa)
