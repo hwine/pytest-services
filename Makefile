@@ -7,6 +7,12 @@ AWS_PROFILE := default
 
 PYTEST_OPTS := ''
 
+PRODUCTION_PYTHON := 3.6
+PYTHON_VER_WARNING = $(warning Warning! Frost production uses Python $(PRODUCTION_PYTHON), \
+		      you're running $(shell python -V))
+PYTHON_VER_ERROR = $(error Frost production uses Python $(PRODUCTION_PYTHON), \
+		      you're running $(shell python -V))
+
 all: check_venv
 	pytest
 
@@ -18,6 +24,8 @@ awsci: check_venv
 check_venv:
 ifeq ($(VIRTUAL_ENV),)
 	$(error "Run frost from a virtualenv (try 'make install && source venv/bin/activate')")
+else
+	python -V | grep $(PRODUCTION_PYTHON) || true ; $(PYTHON_VER_WARNING)
 endif
 
 check_conftest_imports:
@@ -68,6 +76,7 @@ metatest:
 
 venv:
 	python3 -m venv venv
+	./venv/bin/python -V | grep $(PRODUCTION_PYTHON) || true; $(PYTHON_VER_WARNING)
 
 .PHONY:
 	all \
