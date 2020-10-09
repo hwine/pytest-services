@@ -540,12 +540,12 @@ query param <code class="docutils literal notranslate"><span class="pre">q</span
 <div class="section" id="design">
 <h3>Design<a class="headerlink" href="#design" title="Permalink to this headline">¶</a></h3>
 <p>Currently this is a monolithic pytest package, but should eventually
-<a class="reference external" href="#3">be extracted into a pytest plugin</a> and with <a class="reference external" href="#4">separate dependent
+<a class="reference external" href="https://github.com/mozilla/frost/issues/3">be extracted into a pytest plugin</a> and with <a class="reference external" href="https://github.com/mozilla/frost/issues/4">separate dependent
 pytest plugins for each service</a>.</p>
 <p>API responses should fit on disk and in memory (i.e. don’t use this
 for log processing or checking binaries for malware), and be safe to
 cache for minutes, hours, or days (i.e. probably don’t use this for
-monitoring a streaming API) (NB: <a class="reference external" href="#5">bug for specifying data
+monitoring a streaming API) (NB: <a class="reference external" href="https://github.com/mozilla/frost/issues/5">bug for specifying data
 freshness</a>).</p>
 <p>Additionally we want:</p>
 <ul class="simple">
