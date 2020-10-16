@@ -38,7 +38,7 @@
 <span class="kn">from</span> <span class="nn">helpers</span> <span class="kn">import</span> <span class="n">get_param_id</span>
 
 
-<div class="viewcode-block" id="user_is_inactive"><a class="viewcode-back" href="../../../source/aws/aws.iam.html#aws.iam.helpers.user_is_inactive">[docs]</a><span class="k">def</span> <span class="nf">user_is_inactive</span><span class="p">(</span><span class="n">iam_user</span><span class="p">,</span> <span class="n">no_activity_since</span><span class="p">,</span> <span class="n">created_after</span><span class="p">):</span>
+<div class="viewcode-block" id="user_is_inactive"><a class="viewcode-back" href="../../../source_4/aws/aws.iam.html#aws.iam.helpers.user_is_inactive">[docs]</a><span class="k">def</span> <span class="nf">user_is_inactive</span><span class="p">(</span><span class="n">iam_user</span><span class="p">,</span> <span class="n">no_activity_since</span><span class="p">,</span> <span class="n">created_after</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns False if any of these are true:</span>
 <span class="sd">        - The user was created after the passed in &quot;created_after&quot; datetime.</span>
@@ -143,14 +143,14 @@
     <span class="k">return</span> <span class="kc">True</span></div>
 
 
-<div class="viewcode-block" id="is_credential_active"><a class="viewcode-back" href="../../../source/aws/aws.iam.html#aws.iam.helpers.is_credential_active">[docs]</a><span class="k">def</span> <span class="nf">is_credential_active</span><span class="p">(</span><span class="n">credential_active</span><span class="p">,</span> <span class="n">credential_last_used</span><span class="p">):</span>
+<div class="viewcode-block" id="is_credential_active"><a class="viewcode-back" href="../../../source_4/aws/aws.iam.html#aws.iam.helpers.is_credential_active">[docs]</a><span class="k">def</span> <span class="nf">is_credential_active</span><span class="p">(</span><span class="n">credential_active</span><span class="p">,</span> <span class="n">credential_last_used</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">credential_active</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span> <span class="ow">and</span> <span class="n">credential_last_used</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
         <span class="s2">&quot;N/A&quot;</span><span class="p">,</span>
         <span class="s2">&quot;no_information&quot;</span><span class="p">,</span>
     <span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="is_access_key_expired"><a class="viewcode-back" href="../../../source/aws/aws.iam.html#aws.iam.helpers.is_access_key_expired">[docs]</a><span class="k">def</span> <span class="nf">is_access_key_expired</span><span class="p">(</span><span class="n">iam_access_key</span><span class="p">,</span> <span class="n">access_key_expiration_date</span><span class="p">):</span>
+<div class="viewcode-block" id="is_access_key_expired"><a class="viewcode-back" href="../../../source_4/aws/aws.iam.html#aws.iam.helpers.is_access_key_expired">[docs]</a><span class="k">def</span> <span class="nf">is_access_key_expired</span><span class="p">(</span><span class="n">iam_access_key</span><span class="p">,</span> <span class="n">access_key_expiration_date</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compares the CreateDate of the access key with the datetime object passed</span>
 <span class="sd">    in as `access_key_expiration_date` and returns True if the CreateDate is</span>
@@ -182,11 +182,11 @@
     <span class="k">return</span> <span class="n">access_key_expiration_date</span> <span class="o">&gt;</span> <span class="n">iam_access_key</span><span class="p">[</span><span class="s2">&quot;CreateDate&quot;</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="get_iam_user_name"><a class="viewcode-back" href="../../../source/aws/aws.iam.html#aws.iam.helpers.get_iam_user_name">[docs]</a><span class="k">def</span> <span class="nf">get_iam_user_name</span><span class="p">(</span><span class="n">login</span><span class="p">):</span>
+<div class="viewcode-block" id="get_iam_user_name"><a class="viewcode-back" href="../../../source_4/aws/aws.iam.html#aws.iam.helpers.get_iam_user_name">[docs]</a><span class="k">def</span> <span class="nf">get_iam_user_name</span><span class="p">(</span><span class="n">login</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">get_param_id</span><span class="p">(</span><span class="n">login</span><span class="p">,</span> <span class="s2">&quot;UserName&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_iam_user_name_only"><a class="viewcode-back" href="../../../source/aws/aws.iam.html#aws.iam.helpers.get_iam_user_name_only">[docs]</a><span class="k">def</span> <span class="nf">get_iam_user_name_only</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+<div class="viewcode-block" id="get_iam_user_name_only"><a class="viewcode-back" href="../../../source_4/aws/aws.iam.html#aws.iam.helpers.get_iam_user_name_only">[docs]</a><span class="k">def</span> <span class="nf">get_iam_user_name_only</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;UserName&quot;</span> <span class="ow">in</span> <span class="n">user</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">get_iam_user_name</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">None</span></div>
@@ -208,22 +208,6 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Source Code Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/frost/modules.html">Source frost</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/aws/modules.html">Source aws (attempted no tests, but that isn't working)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/gcp/modules.html">Source gcp (tests)</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../readme-include.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../CodingConventions.html">Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../MozillaDeployment.html">Mozilla Deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../NewServices.html">Adding a New Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ContributingDocumentation.html">Contributing Documentation</a></li>
-</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>

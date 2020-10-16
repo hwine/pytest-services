@@ -35,7 +35,7 @@
 <span></span><span class="kn">from</span> <span class="nn">conftest</span> <span class="kn">import</span> <span class="n">gcp_client</span>
 
 
-<div class="viewcode-block" id="service_accounts"><a class="viewcode-back" href="../../../source/gcp/gcp.iam.html#gcp.iam.resources.service_accounts">[docs]</a><span class="k">def</span> <span class="nf">service_accounts</span><span class="p">():</span>
+<div class="viewcode-block" id="service_accounts"><a class="viewcode-back" href="../../../source_4/gcp/gcp.iam.html#gcp.iam.resources.service_accounts">[docs]</a><span class="k">def</span> <span class="nf">service_accounts</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">project_id</span> <span class="ow">in</span> <span class="n">gcp_client</span><span class="o">.</span><span class="n">project_list</span><span class="p">:</span>
         <span class="n">results</span> <span class="o">+=</span> <span class="n">gcp_client</span><span class="o">.</span><span class="n">list</span><span class="p">(</span>
@@ -47,7 +47,7 @@
     <span class="k">return</span> <span class="n">results</span></div>
 
 
-<div class="viewcode-block" id="service_account_keys"><a class="viewcode-back" href="../../../source/gcp/gcp.iam.html#gcp.iam.resources.service_account_keys">[docs]</a><span class="k">def</span> <span class="nf">service_account_keys</span><span class="p">(</span><span class="n">service_account</span><span class="p">):</span>
+<div class="viewcode-block" id="service_account_keys"><a class="viewcode-back" href="../../../source_4/gcp/gcp.iam.html#gcp.iam.resources.service_account_keys">[docs]</a><span class="k">def</span> <span class="nf">service_account_keys</span><span class="p">(</span><span class="n">service_account</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">gcp_client</span><span class="o">.</span><span class="n">list</span><span class="p">(</span>
         <span class="s2">&quot;iam&quot;</span><span class="p">,</span>
         <span class="s2">&quot;projects.serviceAccounts.keys&quot;</span><span class="p">,</span>
@@ -56,7 +56,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="all_service_account_keys"><a class="viewcode-back" href="../../../source/gcp/gcp.iam.html#gcp.iam.resources.all_service_account_keys">[docs]</a><span class="k">def</span> <span class="nf">all_service_account_keys</span><span class="p">():</span>
+<div class="viewcode-block" id="all_service_account_keys"><a class="viewcode-back" href="../../../source_4/gcp/gcp.iam.html#gcp.iam.resources.all_service_account_keys">[docs]</a><span class="k">def</span> <span class="nf">all_service_account_keys</span><span class="p">():</span>
     <span class="n">keys</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">sa</span> <span class="ow">in</span> <span class="n">service_accounts</span><span class="p">():</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">service_account_keys</span><span class="p">(</span><span class="n">sa</span><span class="p">):</span>
@@ -64,7 +64,7 @@
     <span class="k">return</span> <span class="n">key</span></div>
 
 
-<div class="viewcode-block" id="project_iam_bindings"><a class="viewcode-back" href="../../../source/gcp/gcp.iam.html#gcp.iam.resources.project_iam_bindings">[docs]</a><span class="k">def</span> <span class="nf">project_iam_bindings</span><span class="p">():</span>
+<div class="viewcode-block" id="project_iam_bindings"><a class="viewcode-back" href="../../../source_4/gcp/gcp.iam.html#gcp.iam.resources.project_iam_bindings">[docs]</a><span class="k">def</span> <span class="nf">project_iam_bindings</span><span class="p">():</span>
     <span class="n">bindings</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">policies</span> <span class="o">=</span> <span class="n">gcp_client</span><span class="o">.</span><span class="n">get_project_iam_policy</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">policy</span> <span class="ow">in</span> <span class="n">policies</span><span class="p">:</span>
@@ -89,22 +89,6 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Source Code Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/frost/modules.html">Source frost</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/aws/modules.html">Source aws (attempted no tests, but that isn't working)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/gcp/modules.html">Source gcp (tests)</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../readme-include.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../CodingConventions.html">Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../MozillaDeployment.html">Mozilla Deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../NewServices.html">Adding a New Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ContributingDocumentation.html">Contributing Documentation</a></li>
-</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>

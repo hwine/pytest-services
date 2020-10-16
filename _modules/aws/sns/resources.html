@@ -35,7 +35,7 @@
 <span></span><span class="kn">from</span> <span class="nn">conftest</span> <span class="kn">import</span> <span class="n">botocore_client</span>
 
 
-<div class="viewcode-block" id="sns_subscriptions"><a class="viewcode-back" href="../../../source/aws/aws.sns.html#aws.sns.resources.sns_subscriptions">[docs]</a><span class="k">def</span> <span class="nf">sns_subscriptions</span><span class="p">():</span>
+<div class="viewcode-block" id="sns_subscriptions"><a class="viewcode-back" href="../../../source_4/aws/aws.sns.html#aws.sns.resources.sns_subscriptions">[docs]</a><span class="k">def</span> <span class="nf">sns_subscriptions</span><span class="p">():</span>
     <span class="s2">&quot;https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sns.html#subscription&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sns&quot;</span><span class="p">,</span> <span class="s2">&quot;list_subscriptions&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{})</span>
@@ -45,7 +45,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="sns_topics"><a class="viewcode-back" href="../../../source/aws/aws.sns.html#aws.sns.resources.sns_topics">[docs]</a><span class="k">def</span> <span class="nf">sns_topics</span><span class="p">():</span>
+<div class="viewcode-block" id="sns_topics"><a class="viewcode-back" href="../../../source_4/aws/aws.sns.html#aws.sns.resources.sns_topics">[docs]</a><span class="k">def</span> <span class="nf">sns_topics</span><span class="p">():</span>
     <span class="s2">&quot;https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sns.html#topic&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sns&quot;</span><span class="p">,</span> <span class="s2">&quot;list_topics&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{})</span>
@@ -55,7 +55,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="sns_subscription_attributes"><a class="viewcode-back" href="../../../source/aws/aws.sns.html#aws.sns.resources.sns_subscription_attributes">[docs]</a><span class="k">def</span> <span class="nf">sns_subscription_attributes</span><span class="p">():</span>
+<div class="viewcode-block" id="sns_subscription_attributes"><a class="viewcode-back" href="../../../source_4/aws/aws.sns.html#aws.sns.resources.sns_subscription_attributes">[docs]</a><span class="k">def</span> <span class="nf">sns_subscription_attributes</span><span class="p">():</span>
     <span class="s2">&quot;https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sns.html#subscription&quot;</span>
     <span class="k">return</span> <span class="p">[</span>
         <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
@@ -72,7 +72,7 @@
     <span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="sns_subscriptions_by_topic"><a class="viewcode-back" href="../../../source/aws/aws.sns.html#aws.sns.resources.sns_subscriptions_by_topic">[docs]</a><span class="k">def</span> <span class="nf">sns_subscriptions_by_topic</span><span class="p">():</span>
+<div class="viewcode-block" id="sns_subscriptions_by_topic"><a class="viewcode-back" href="../../../source_4/aws/aws.sns.html#aws.sns.resources.sns_subscriptions_by_topic">[docs]</a><span class="k">def</span> <span class="nf">sns_subscriptions_by_topic</span><span class="p">():</span>
     <span class="s2">&quot;https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sns.html#topic&quot;</span>
     <span class="k">return</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -110,22 +110,6 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Source Code Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/frost/modules.html">Source frost</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/aws/modules.html">Source aws (attempted no tests, but that isn't working)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/gcp/modules.html">Source gcp (tests)</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../readme-include.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../CodingConventions.html">Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../MozillaDeployment.html">Mozilla Deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../NewServices.html">Adding a New Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ContributingDocumentation.html">Contributing Documentation</a></li>
-</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>

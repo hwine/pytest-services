@@ -36,7 +36,7 @@
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 
-<div class="viewcode-block" id="ip_permission_opens_all_ports"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ip_permission_opens_all_ports">[docs]</a><span class="k">def</span> <span class="nf">ip_permission_opens_all_ports</span><span class="p">(</span><span class="n">ipp</span><span class="p">):</span>
+<div class="viewcode-block" id="ip_permission_opens_all_ports"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.ip_permission_opens_all_ports">[docs]</a><span class="k">def</span> <span class="nf">ip_permission_opens_all_ports</span><span class="p">(</span><span class="n">ipp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if an EC2 security group IP permission opens all</span>
 <span class="sd">    ports and False otherwise.</span>
@@ -68,7 +68,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="ip_permission_cidr_allows_all_ips"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ip_permission_cidr_allows_all_ips">[docs]</a><span class="k">def</span> <span class="nf">ip_permission_cidr_allows_all_ips</span><span class="p">(</span><span class="n">ipp</span><span class="p">):</span>
+<div class="viewcode-block" id="ip_permission_cidr_allows_all_ips"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.ip_permission_cidr_allows_all_ips">[docs]</a><span class="k">def</span> <span class="nf">ip_permission_cidr_allows_all_ips</span><span class="p">(</span><span class="n">ipp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if any IPv4 or IPv6 range for an EC2 security group</span>
 <span class="sd">    IP permission opens allows access to or from all IPs and False</span>
@@ -97,7 +97,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="ip_permission_grants_access_to_group_with_id"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ip_permission_grants_access_to_group_with_id">[docs]</a><span class="k">def</span> <span class="nf">ip_permission_grants_access_to_group_with_id</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span> <span class="n">security_group_id</span><span class="p">):</span>
+<div class="viewcode-block" id="ip_permission_grants_access_to_group_with_id"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.ip_permission_grants_access_to_group_with_id">[docs]</a><span class="k">def</span> <span class="nf">ip_permission_grants_access_to_group_with_id</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span> <span class="n">security_group_id</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if an EC2 security group IP permission opens access to</span>
 <span class="sd">    a security with the given ID and False otherwise.</span>
@@ -118,7 +118,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="ec2_security_group_opens_all_ports"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ec2_security_group_opens_all_ports">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_group_opens_all_ports</span><span class="p">(</span><span class="n">ec2_security_group</span><span class="p">):</span>
+<div class="viewcode-block" id="ec2_security_group_opens_all_ports"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.ec2_security_group_opens_all_ports">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_group_opens_all_ports</span><span class="p">(</span><span class="n">ec2_security_group</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if an ec2 security group includes a permission</span>
 <span class="sd">    allowing inbound access on all ports and False otherwise</span>
@@ -146,7 +146,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="ec2_security_group_opens_all_ports_to_self"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ec2_security_group_opens_all_ports_to_self">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_group_opens_all_ports_to_self</span><span class="p">(</span><span class="n">ec2_security_group</span><span class="p">):</span>
+<div class="viewcode-block" id="ec2_security_group_opens_all_ports_to_self"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.ec2_security_group_opens_all_ports_to_self">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_group_opens_all_ports_to_self</span><span class="p">(</span><span class="n">ec2_security_group</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if an ec2 security group includes a permission</span>
 <span class="sd">    allowing all IPs inbound access on all ports and False otherwise</span>
@@ -203,7 +203,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="ec2_security_group_opens_all_ports_to_all"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ec2_security_group_opens_all_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_group_opens_all_ports_to_all</span><span class="p">(</span><span class="n">ec2_security_group</span><span class="p">):</span>
+<div class="viewcode-block" id="ec2_security_group_opens_all_ports_to_all"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.ec2_security_group_opens_all_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_group_opens_all_ports_to_all</span><span class="p">(</span><span class="n">ec2_security_group</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if an ec2 security group includes a permission</span>
 <span class="sd">    allowing all IPs inbound access on all ports and False otherwise</span>
@@ -243,7 +243,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="ec2_security_group_opens_specific_ports_to_all"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ec2_security_group_opens_specific_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_group_opens_specific_ports_to_all</span><span class="p">(</span>
+<div class="viewcode-block" id="ec2_security_group_opens_specific_ports_to_all"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.ec2_security_group_opens_specific_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_group_opens_specific_ports_to_all</span><span class="p">(</span>
     <span class="n">ec2_security_group</span><span class="p">,</span> <span class="n">whitelisted_ports</span><span class="o">=</span><span class="kc">None</span>
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -297,7 +297,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="ec2_instance_test_id"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ec2_instance_test_id">[docs]</a><span class="k">def</span> <span class="nf">ec2_instance_test_id</span><span class="p">(</span><span class="n">ec2_instance</span><span class="p">):</span>
+<div class="viewcode-block" id="ec2_instance_test_id"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.ec2_instance_test_id">[docs]</a><span class="k">def</span> <span class="nf">ec2_instance_test_id</span><span class="p">(</span><span class="n">ec2_instance</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A getter fn for test ids for EC2 instances&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="s2">&quot;</span><span class="si">{0[InstanceId]}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ec2_instance</span><span class="p">)</span>
@@ -306,7 +306,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ec2_security_group_test_id"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ec2_security_group_test_id">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_group_test_id</span><span class="p">(</span><span class="n">ec2_security_group</span><span class="p">):</span>
+<div class="viewcode-block" id="ec2_security_group_test_id"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.ec2_security_group_test_id">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_group_test_id</span><span class="p">(</span><span class="n">ec2_security_group</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A getter fn for test ids for EC2 security groups&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="s2">&quot;</span><span class="si">{0[GroupId]}</span><span class="s2"> </span><span class="si">{0[GroupName]}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ec2_security_group</span><span class="p">)</span>
@@ -315,12 +315,12 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ec2_address_id"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ec2_address_id">[docs]</a><span class="k">def</span> <span class="nf">ec2_address_id</span><span class="p">(</span><span class="n">ec2_address</span><span class="p">):</span>
+<div class="viewcode-block" id="ec2_address_id"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.ec2_address_id">[docs]</a><span class="k">def</span> <span class="nf">ec2_address_id</span><span class="p">(</span><span class="n">ec2_address</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Format an Elastic IP address.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">get_param_id</span><span class="p">(</span><span class="n">ec2_address</span><span class="p">,</span> <span class="s2">&quot;PublicIp&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="is_ebs_volume_encrypted"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.is_ebs_volume_encrypted">[docs]</a><span class="k">def</span> <span class="nf">is_ebs_volume_encrypted</span><span class="p">(</span><span class="n">ebs</span><span class="p">):</span>
+<div class="viewcode-block" id="is_ebs_volume_encrypted"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.is_ebs_volume_encrypted">[docs]</a><span class="k">def</span> <span class="nf">is_ebs_volume_encrypted</span><span class="p">(</span><span class="n">ebs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks the EBS volume &#39;Encrypted&#39; value.</span>
 
@@ -344,7 +344,7 @@
     <span class="k">return</span> <span class="n">ebs</span><span class="p">[</span><span class="s2">&quot;Encrypted&quot;</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="is_ebs_volume_piops"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.is_ebs_volume_piops">[docs]</a><span class="k">def</span> <span class="nf">is_ebs_volume_piops</span><span class="p">(</span><span class="n">ebs</span><span class="p">):</span>
+<div class="viewcode-block" id="is_ebs_volume_piops"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.is_ebs_volume_piops">[docs]</a><span class="k">def</span> <span class="nf">is_ebs_volume_piops</span><span class="p">(</span><span class="n">ebs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks if the EBS volume type is provisioned iops</span>
 
@@ -368,7 +368,7 @@
     <span class="k">return</span> <span class="n">ebs</span><span class="p">[</span><span class="s2">&quot;VolumeType&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;io&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="is_ebs_snapshot_public"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.is_ebs_snapshot_public">[docs]</a><span class="k">def</span> <span class="nf">is_ebs_snapshot_public</span><span class="p">(</span><span class="n">ebs_snapshot</span><span class="p">):</span>
+<div class="viewcode-block" id="is_ebs_snapshot_public"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.is_ebs_snapshot_public">[docs]</a><span class="k">def</span> <span class="nf">is_ebs_snapshot_public</span><span class="p">(</span><span class="n">ebs_snapshot</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks if the EBS snapshot&#39;s &#39;CreateVolumePermissions&#39; attribute allows for public creation.</span>
 
@@ -389,7 +389,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="ec2_instance_missing_tag_names"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ec2_instance_missing_tag_names">[docs]</a><span class="k">def</span> <span class="nf">ec2_instance_missing_tag_names</span><span class="p">(</span><span class="n">ec2_instance</span><span class="p">,</span> <span class="n">required_tag_names</span><span class="p">):</span>
+<div class="viewcode-block" id="ec2_instance_missing_tag_names"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.ec2_instance_missing_tag_names">[docs]</a><span class="k">def</span> <span class="nf">ec2_instance_missing_tag_names</span><span class="p">(</span><span class="n">ec2_instance</span><span class="p">,</span> <span class="n">required_tag_names</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns any tag names that are missing from an EC2 Instance.</span>
 
@@ -404,7 +404,7 @@
     <span class="k">return</span> <span class="n">required_tag_names</span> <span class="o">-</span> <span class="n">instance_tag_names</span></div>
 
 
-<div class="viewcode-block" id="ebs_volume_attached_to_instance"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ebs_volume_attached_to_instance">[docs]</a><span class="k">def</span> <span class="nf">ebs_volume_attached_to_instance</span><span class="p">(</span><span class="n">ebs</span><span class="p">,</span> <span class="n">volume_created_days_ago</span><span class="o">=</span><span class="mi">90</span><span class="p">):</span>
+<div class="viewcode-block" id="ebs_volume_attached_to_instance"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.helpers.ebs_volume_attached_to_instance">[docs]</a><span class="k">def</span> <span class="nf">ebs_volume_attached_to_instance</span><span class="p">(</span><span class="n">ebs</span><span class="p">,</span> <span class="n">volume_created_days_ago</span><span class="o">=</span><span class="mi">90</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check an ebs volume is attached to an instance. The &quot;volume_created_days_ago&quot;</span>
 <span class="sd">    parameter allows checking for volumes that were created that many days ago.</span>
@@ -447,22 +447,6 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Source Code Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/frost/modules.html">Source frost</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/aws/modules.html">Source aws (attempted no tests, but that isn't working)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/gcp/modules.html">Source gcp (tests)</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../readme-include.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../CodingConventions.html">Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../MozillaDeployment.html">Mozilla Deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../NewServices.html">Adding a New Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ContributingDocumentation.html">Contributing Documentation</a></li>
-</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>

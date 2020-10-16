@@ -32,7 +32,7 @@
           <div class="body" role="main">
             
   <h1>Source code for gcp.compute.helpers</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="does_firewall_open_all_ports_to_any"><a class="viewcode-back" href="../../../source/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_all_ports_to_any">[docs]</a><span></span><span class="k">def</span> <span class="nf">does_firewall_open_all_ports_to_any</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
+<div class="viewcode-block" id="does_firewall_open_all_ports_to_any"><a class="viewcode-back" href="../../../source_4/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_all_ports_to_any">[docs]</a><span></span><span class="k">def</span> <span class="nf">does_firewall_open_all_ports_to_any</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if firewall has a rule to open all ports to any source. Excludes ICMP.</span>
 
@@ -65,7 +65,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="does_firewall_open_all_ports_to_all"><a class="viewcode-back" href="../../../source/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_all_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">does_firewall_open_all_ports_to_all</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
+<div class="viewcode-block" id="does_firewall_open_all_ports_to_all"><a class="viewcode-back" href="../../../source_4/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_all_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">does_firewall_open_all_ports_to_all</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if firewall has a rule to open all ports to all. Excludes ICMP.</span>
 
@@ -96,7 +96,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="does_firewall_open_any_ports_to_all"><a class="viewcode-back" href="../../../source/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_any_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">does_firewall_open_any_ports_to_all</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
+<div class="viewcode-block" id="does_firewall_open_any_ports_to_all"><a class="viewcode-back" href="../../../source_4/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_any_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">does_firewall_open_any_ports_to_all</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if firewall has a rule to open any ports (except 80/443) to all. Excludes ICMP.</span>
 
@@ -138,7 +138,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="firewall_id"><a class="viewcode-back" href="../../../source/gcp/gcp.compute.html#gcp.compute.helpers.firewall_id">[docs]</a><span class="k">def</span> <span class="nf">firewall_id</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
+<div class="viewcode-block" id="firewall_id"><a class="viewcode-back" href="../../../source_4/gcp/gcp.compute.html#gcp.compute.helpers.firewall_id">[docs]</a><span class="k">def</span> <span class="nf">firewall_id</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A getter fn for test ids for Firewalls&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">-</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">firewall</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">firewall</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
@@ -163,22 +163,6 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Source Code Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/frost/modules.html">Source frost</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/aws/modules.html">Source aws (attempted no tests, but that isn't working)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/gcp/modules.html">Source gcp (tests)</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../readme-include.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../CodingConventions.html">Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../MozillaDeployment.html">Mozilla Deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../NewServices.html">Adding a New Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../ContributingDocumentation.html">Contributing Documentation</a></li>
-</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>

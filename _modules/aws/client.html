@@ -48,7 +48,7 @@
 <span class="n">SERVICES_WITHOUT_REGIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;iam&quot;</span><span class="p">,</span> <span class="s2">&quot;s3&quot;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="get_session"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.get_session">[docs]</a><span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">()</span>
+<div class="viewcode-block" id="get_session"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.get_session">[docs]</a><span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">get_session</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns a new or cached botocore session for the AWS profile.&quot;&quot;&quot;</span>
 
@@ -66,7 +66,7 @@
     <span class="k">return</span> <span class="n">botocore</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="n">profile</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_client"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.get_client">[docs]</a><span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">()</span>
+<div class="viewcode-block" id="get_client"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.get_client">[docs]</a><span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">get_client</span><span class="p">(</span><span class="n">profile</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">service</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns a new or cached botocore service client for the AWS profile, region, and service.</span>
 
@@ -81,22 +81,22 @@
     <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">create_client</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="n">region</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_available_profiles"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.get_available_profiles">[docs]</a><span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="viewcode-block" id="get_available_profiles"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.get_available_profiles">[docs]</a><span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_available_profiles</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">get_session</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="n">profile</span><span class="p">)</span><span class="o">.</span><span class="n">available_profiles</span></div>
 
 
-<div class="viewcode-block" id="get_available_regions"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.get_available_regions">[docs]</a><span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="viewcode-block" id="get_available_regions"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.get_available_regions">[docs]</a><span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_available_regions</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">get_session</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="n">profile</span><span class="p">)</span><span class="o">.</span><span class="n">get_available_regions</span><span class="p">(</span><span class="s2">&quot;ec2&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_available_services"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.get_available_services">[docs]</a><span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">()</span>
+<div class="viewcode-block" id="get_available_services"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.get_available_services">[docs]</a><span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">get_available_services</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">get_session</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="n">profile</span><span class="p">)</span><span class="o">.</span><span class="n">get_available_services</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="full_results"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.full_results">[docs]</a><span class="k">def</span> <span class="nf">full_results</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="full_results"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.full_results">[docs]</a><span class="k">def</span> <span class="nf">full_results</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns JSON results for an AWS botocore call. Flattens paginated results (if any).&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">client</span><span class="o">.</span><span class="n">can_paginate</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
         <span class="n">paginator</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_paginator</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
@@ -109,7 +109,7 @@
 <span class="n">default_call</span> <span class="o">=</span> <span class="n">AWSAPICall</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">AWSAPICall</span><span class="o">.</span><span class="n">_fields</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">[[],</span> <span class="p">{}])</span>
 
 
-<div class="viewcode-block" id="cache_key"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.cache_key">[docs]</a><span class="k">def</span> <span class="nf">cache_key</span><span class="p">(</span><span class="n">call</span><span class="p">):</span>
+<div class="viewcode-block" id="cache_key"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.cache_key">[docs]</a><span class="k">def</span> <span class="nf">cache_key</span><span class="p">(</span><span class="n">call</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the fullname (directory and filename) for an AWS API call.</span>
 
 <span class="sd">    &gt;&gt;&gt; cache_key(default_call._replace(</span>
@@ -137,7 +137,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_aws_resource"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.get_aws_resource">[docs]</a><span class="k">def</span> <span class="nf">get_aws_resource</span><span class="p">(</span>
+<div class="viewcode-block" id="get_aws_resource"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.get_aws_resource">[docs]</a><span class="k">def</span> <span class="nf">get_aws_resource</span><span class="p">(</span>
     <span class="n">service_name</span><span class="p">,</span>
     <span class="n">method_name</span><span class="p">,</span>
     <span class="n">call_args</span><span class="p">,</span>
@@ -196,7 +196,7 @@
         <span class="k">yield</span> <span class="n">result</span></div>
 
 
-<div class="viewcode-block" id="BotocoreClient"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.BotocoreClient">[docs]</a><span class="k">class</span> <span class="nc">BotocoreClient</span><span class="p">:</span>
+<div class="viewcode-block" id="BotocoreClient"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.BotocoreClient">[docs]</a><span class="k">class</span> <span class="nc">BotocoreClient</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profiles</span><span class="p">,</span> <span class="n">regions</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="n">debug_calls</span><span class="p">,</span> <span class="n">debug_cache</span><span class="p">,</span> <span class="n">offline</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">profiles</span> <span class="o">=</span> <span class="n">profiles</span> <span class="ow">or</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">cache</span>
@@ -214,12 +214,12 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 
-<div class="viewcode-block" id="BotocoreClient.get_regions"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.BotocoreClient.get_regions">[docs]</a>    <span class="k">def</span> <span class="nf">get_regions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BotocoreClient.get_regions"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.BotocoreClient.get_regions">[docs]</a>    <span class="k">def</span> <span class="nf">get_regions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">offline</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">regions</span></div>
 
-<div class="viewcode-block" id="BotocoreClient.get"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.BotocoreClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+<div class="viewcode-block" id="BotocoreClient.get"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.BotocoreClient.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">service_name</span><span class="p">,</span>
         <span class="n">method_name</span><span class="p">,</span>
@@ -259,7 +259,7 @@
 
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="BotocoreClient.values"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.BotocoreClient.values">[docs]</a>    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BotocoreClient.values"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.BotocoreClient.values">[docs]</a>    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the wrapped value</span>
 
 <span class="sd">        &gt;&gt;&gt; c = BotocoreClient([None], None, None, None, offline=True)</span>
@@ -269,7 +269,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span></div>
 
-<div class="viewcode-block" id="BotocoreClient.extract_key"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.BotocoreClient.extract_key">[docs]</a>    <span class="k">def</span> <span class="nf">extract_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="BotocoreClient.extract_key"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.BotocoreClient.extract_key">[docs]</a>    <span class="k">def</span> <span class="nf">extract_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        From an iterable of dicts returns the value with the given</span>
 <span class="sd">        keys discarding other values:</span>
@@ -334,7 +334,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="n">tmp</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="BotocoreClient.flatten"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.BotocoreClient.flatten">[docs]</a>    <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BotocoreClient.flatten"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.BotocoreClient.flatten">[docs]</a>    <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Flattens one level of a nested list:</span>
 
@@ -354,7 +354,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">,</span> <span class="p">[])</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="BotocoreClient.debug"><a class="viewcode-back" href="../../source/aws/aws.html#aws.client.BotocoreClient.debug">[docs]</a>    <span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BotocoreClient.debug"><a class="viewcode-back" href="../../source_4/aws/aws.html#aws.client.BotocoreClient.debug">[docs]</a>    <span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div></div>
 </pre></div>
@@ -375,22 +375,6 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Source Code Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../source/frost/modules.html">Source frost</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/aws/modules.html">Source aws (attempted no tests, but that isn't working)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../source/gcp/modules.html">Source gcp (tests)</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../readme-include.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../CodingConventions.html">Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../MozillaDeployment.html">Mozilla Deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../NewServices.html">Adding a New Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ContributingDocumentation.html">Contributing Documentation</a></li>
-</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
