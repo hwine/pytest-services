@@ -20,7 +20,6 @@ aws.elasticsearch.test\_elasticsearch\_domains\_have\_logging\_enabled module
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 

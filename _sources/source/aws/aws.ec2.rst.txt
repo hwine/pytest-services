@@ -116,7 +116,6 @@ aws.ec2.test\_ec2\_vpc\_flow\_log\_enabled module
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 

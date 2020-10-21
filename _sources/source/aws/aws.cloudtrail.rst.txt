@@ -28,7 +28,6 @@ aws.cloudtrail.test\_cloudtrail\_log\_validation\_enabled module
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 

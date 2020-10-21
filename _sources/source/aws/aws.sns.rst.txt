@@ -28,7 +28,6 @@ aws.sns.test\_sns\_topics\_without\_subscriptions module
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 

@@ -5,8 +5,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>gcp.compute.helpers &#8212; Frost  documentation</title>
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/flask.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -15,24 +16,31 @@
     <script src="../../../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+  <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../../../';</script>
    
-  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Frost  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">gcp.compute.helpers</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <h1>Source code for gcp.compute.helpers</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="does_firewall_open_all_ports_to_any"><a class="viewcode-back" href="../../../source_4/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_all_ports_to_any">[docs]</a><span></span><span class="k">def</span> <span class="nf">does_firewall_open_all_ports_to_any</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
+<div class="viewcode-block" id="does_firewall_open_all_ports_to_any"><a class="viewcode-back" href="../../../source/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_all_ports_to_any">[docs]</a><span></span><span class="k">def</span> <span class="nf">does_firewall_open_all_ports_to_any</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if firewall has a rule to open all ports to any source. Excludes ICMP.</span>
 
@@ -65,7 +73,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="does_firewall_open_all_ports_to_all"><a class="viewcode-back" href="../../../source_4/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_all_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">does_firewall_open_all_ports_to_all</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
+<div class="viewcode-block" id="does_firewall_open_all_ports_to_all"><a class="viewcode-back" href="../../../source/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_all_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">does_firewall_open_all_ports_to_all</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if firewall has a rule to open all ports to all. Excludes ICMP.</span>
 
@@ -96,7 +104,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="does_firewall_open_any_ports_to_all"><a class="viewcode-back" href="../../../source_4/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_any_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">does_firewall_open_any_ports_to_all</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
+<div class="viewcode-block" id="does_firewall_open_any_ports_to_all"><a class="viewcode-back" href="../../../source/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_any_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">does_firewall_open_any_ports_to_all</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if firewall has a rule to open any ports (except 80/443) to all. Excludes ICMP.</span>
 
@@ -138,7 +146,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="firewall_id"><a class="viewcode-back" href="../../../source_4/gcp/gcp.compute.html#gcp.compute.helpers.firewall_id">[docs]</a><span class="k">def</span> <span class="nf">firewall_id</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
+<div class="viewcode-block" id="firewall_id"><a class="viewcode-back" href="../../../source/gcp/gcp.compute.html#gcp.compute.helpers.firewall_id">[docs]</a><span class="k">def</span> <span class="nf">firewall_id</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A getter fn for test ids for Firewalls&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">-</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">firewall</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">firewall</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
@@ -147,32 +155,28 @@
     <span class="p">)</span></div>
 </pre></div>
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
+  <span id="sidebar-top"></span>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../../../index.html">Frost</a></h1>
-
-
-
-
-
-
-
-
+  
+    
+  
 <h3>Navigation</h3>
-
-<div class="relations">
-<h3>Related Topics</h3>
 <ul>
-  <li><a href="../../../index.html">Documentation overview</a><ul>
-  <li><a href="../../index.html">Module code</a><ul>
-  </ul></li>
-  </ul></li>
+  <li><a href="../../../index.html">Overview</a>
+    <ul>
+      <li><a href="../../index.html">Module code</a>
+        
+          
+          </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
-</div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -183,29 +187,16 @@
     </div>
 </div>
 <script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2020.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
+  
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
+  <script src="../../../_static/version_warning_offset.js"></script>
 
-    
-
-    
   </body>
 </html>

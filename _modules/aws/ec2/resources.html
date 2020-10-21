@@ -5,8 +5,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>aws.ec2.resources &#8212; Frost  documentation</title>
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/flask.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -15,20 +16,27 @@
     <script src="../../../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+  <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../../../';</script>
    
-  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Frost  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">aws.ec2.resources</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <h1>Source code for aws.ec2.resources</h1><div class="highlight"><pre>
@@ -44,7 +52,7 @@
 <span class="kn">from</span> <span class="nn">aws.elasticsearch.resources</span> <span class="kn">import</span> <span class="n">elasticsearch_domains</span>
 
 
-<div class="viewcode-block" id="ec2_instances"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.resources.ec2_instances">[docs]</a><span class="k">def</span> <span class="nf">ec2_instances</span><span class="p">():</span>
+<div class="viewcode-block" id="ec2_instances"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.resources.ec2_instances">[docs]</a><span class="k">def</span> <span class="nf">ec2_instances</span><span class="p">():</span>
     <span class="s2">&quot;http://botocore.readthedocs.io/en/latest/reference/services/ec2.html#EC2.Client.describe_instances&quot;</span>
     <span class="c1"># Note: extracting Reservations.Instances drops EC2-Classic Groups at Reservations.Groups</span>
     <span class="k">return</span> <span class="p">(</span>
@@ -66,7 +74,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ec2_security_groups"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.resources.ec2_security_groups">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_groups</span><span class="p">():</span>
+<div class="viewcode-block" id="ec2_security_groups"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.resources.ec2_security_groups">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_groups</span><span class="p">():</span>
     <span class="s2">&quot;http://botocore.readthedocs.io/en/latest/reference/services/ec2.html#EC2.Client.describe_security_groups&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ec2&quot;</span><span class="p">,</span> <span class="s2">&quot;describe_security_groups&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{})</span>
@@ -76,7 +84,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ec2_ebs_volumes"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.resources.ec2_ebs_volumes">[docs]</a><span class="k">def</span> <span class="nf">ec2_ebs_volumes</span><span class="p">():</span>
+<div class="viewcode-block" id="ec2_ebs_volumes"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.resources.ec2_ebs_volumes">[docs]</a><span class="k">def</span> <span class="nf">ec2_ebs_volumes</span><span class="p">():</span>
     <span class="s2">&quot;http://botocore.readthedocs.io/en/latest/reference/services/ec2.html#EC2.Client.describe_volumes&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ec2&quot;</span><span class="p">,</span> <span class="s2">&quot;describe_volumes&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{})</span>
@@ -86,7 +94,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ec2_ebs_snapshots"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.resources.ec2_ebs_snapshots">[docs]</a><span class="k">def</span> <span class="nf">ec2_ebs_snapshots</span><span class="p">():</span>
+<div class="viewcode-block" id="ec2_ebs_snapshots"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.resources.ec2_ebs_snapshots">[docs]</a><span class="k">def</span> <span class="nf">ec2_ebs_snapshots</span><span class="p">():</span>
     <span class="s2">&quot;http://botocore.readthedocs.io/en/latest/reference/services/ec2.html#EC2.Client.describe_snapshots&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ec2&quot;</span><span class="p">,</span> <span class="s2">&quot;describe_snapshots&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span><span class="s2">&quot;OwnerIds&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;self&quot;</span><span class="p">]})</span>
@@ -96,7 +104,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ec2_ebs_snapshots_create_permission"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.resources.ec2_ebs_snapshots_create_permission">[docs]</a><span class="k">def</span> <span class="nf">ec2_ebs_snapshots_create_permission</span><span class="p">():</span>
+<div class="viewcode-block" id="ec2_ebs_snapshots_create_permission"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.resources.ec2_ebs_snapshots_create_permission">[docs]</a><span class="k">def</span> <span class="nf">ec2_ebs_snapshots_create_permission</span><span class="p">():</span>
     <span class="s2">&quot;https://botocore.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html#EC2.Client.describe_snapshot_attribute&quot;</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
         <span class="p">[</span>
@@ -116,7 +124,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ec2_flow_logs"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.resources.ec2_flow_logs">[docs]</a><span class="k">def</span> <span class="nf">ec2_flow_logs</span><span class="p">():</span>
+<div class="viewcode-block" id="ec2_flow_logs"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.resources.ec2_flow_logs">[docs]</a><span class="k">def</span> <span class="nf">ec2_flow_logs</span><span class="p">():</span>
     <span class="s2">&quot;https://botocore.readthedocs.io/en/latest/reference/services/ec2.html#EC2.Client.describe_flow_logs&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ec2&quot;</span><span class="p">,</span> <span class="s2">&quot;describe_flow_logs&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{})</span>
@@ -126,7 +134,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ec2_vpcs"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.resources.ec2_vpcs">[docs]</a><span class="k">def</span> <span class="nf">ec2_vpcs</span><span class="p">():</span>
+<div class="viewcode-block" id="ec2_vpcs"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.resources.ec2_vpcs">[docs]</a><span class="k">def</span> <span class="nf">ec2_vpcs</span><span class="p">():</span>
     <span class="s2">&quot;https://botocore.readthedocs.io/en/latest/reference/services/ec2.html#EC2.Client.describe_vpcs&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ec2&quot;</span><span class="p">,</span> <span class="s2">&quot;describe_vpcs&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{})</span>
@@ -136,7 +144,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ec2_addresses"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.resources.ec2_addresses">[docs]</a><span class="k">def</span> <span class="nf">ec2_addresses</span><span class="p">():</span>
+<div class="viewcode-block" id="ec2_addresses"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.resources.ec2_addresses">[docs]</a><span class="k">def</span> <span class="nf">ec2_addresses</span><span class="p">():</span>
     <span class="s2">&quot;https://botocore.readthedocs.io/en/latest/reference/services/ec2.html#EC2.Client.describe_addresses&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ec2&quot;</span><span class="p">,</span> <span class="s2">&quot;describe_addresses&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{})</span>
@@ -146,7 +154,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ec2_security_groups_with_in_use_flag"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.resources.ec2_security_groups_with_in_use_flag">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_groups_with_in_use_flag</span><span class="p">():</span>
+<div class="viewcode-block" id="ec2_security_groups_with_in_use_flag"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.resources.ec2_security_groups_with_in_use_flag">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_groups_with_in_use_flag</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Returns security groups with an additional &quot;InUse&quot; key,</span>
 <span class="sd">    which is True if it is associated with at least one resource.</span>
 
@@ -211,7 +219,7 @@
     <span class="k">return</span> <span class="n">sec_groups</span></div>
 
 
-<div class="viewcode-block" id="ec2_images_owned_by"><a class="viewcode-back" href="../../../source_4/aws/aws.ec2.html#aws.ec2.resources.ec2_images_owned_by">[docs]</a><span class="k">def</span> <span class="nf">ec2_images_owned_by</span><span class="p">(</span><span class="n">account_ids</span><span class="p">):</span>
+<div class="viewcode-block" id="ec2_images_owned_by"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.resources.ec2_images_owned_by">[docs]</a><span class="k">def</span> <span class="nf">ec2_images_owned_by</span><span class="p">(</span><span class="n">account_ids</span><span class="p">):</span>
     <span class="s2">&quot;Returns a list of EC2 images owned by a list of provided account ids&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
@@ -226,32 +234,28 @@
     <span class="p">)</span></div>
 </pre></div>
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
+  <span id="sidebar-top"></span>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../../../index.html">Frost</a></h1>
-
-
-
-
-
-
-
-
+  
+    
+  
 <h3>Navigation</h3>
-
-<div class="relations">
-<h3>Related Topics</h3>
 <ul>
-  <li><a href="../../../index.html">Documentation overview</a><ul>
-  <li><a href="../../index.html">Module code</a><ul>
-  </ul></li>
-  </ul></li>
+  <li><a href="../../../index.html">Overview</a>
+    <ul>
+      <li><a href="../../index.html">Module code</a>
+        
+          
+          </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
-</div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -262,29 +266,16 @@
     </div>
 </div>
 <script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2020.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
+  
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
+  <script src="../../../_static/version_warning_offset.js"></script>
 
-    
-
-    
   </body>
 </html>

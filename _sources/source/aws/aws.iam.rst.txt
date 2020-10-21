@@ -68,7 +68,6 @@ aws.iam.test\_iam\_user\_without\_mfa module
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 

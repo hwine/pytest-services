@@ -5,8 +5,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>aws.redshift package &#8212; Frost  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/flask.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -15,20 +16,37 @@
     <script src="../../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="aws.s3 package" href="aws.s3.html" />
+    <link rel="prev" title="aws.rds package" href="aws.rds.html" />
+  <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../../';</script>
    
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="aws.s3.html" title="aws.s3 package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="aws.rds.html" title="aws.rds package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Frost  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../Source.html" >Source Code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="modules.html" >aws</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="aws.html" accesskey="U">aws package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">aws.redshift package</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="aws-redshift-package">
@@ -38,6 +56,11 @@
 </div>
 <div class="section" id="module-aws.redshift.helpers">
 <span id="aws-redshift-helpers-module"></span><h2>aws.redshift.helpers module<a class="headerlink" href="#module-aws.redshift.helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="aws.redshift.helpers.redshift_cluster_security_group_test_id">
+<code class="sig-prename descclassname">aws.redshift.helpers.</code><code class="sig-name descname">redshift_cluster_security_group_test_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">security_group</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aws/redshift/helpers.html#redshift_cluster_security_group_test_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.redshift.helpers.redshift_cluster_security_group_test_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py function">
 <dt id="aws.redshift.helpers.redshift_cluster_security_group_is_open_to_all_ips">
 <code class="sig-prename descclassname">aws.redshift.helpers.</code><code class="sig-name descname">redshift_cluster_security_group_is_open_to_all_ips</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">security_group</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aws/redshift/helpers.html#redshift_cluster_security_group_is_open_to_all_ips"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.redshift.helpers.redshift_cluster_security_group_is_open_to_all_ips" title="Permalink to this definition">¶</a></dt>
@@ -59,24 +82,19 @@
 </div>
 </dd></dl>
 
-<dl class="py function">
-<dt id="aws.redshift.helpers.redshift_cluster_security_group_test_id">
-<code class="sig-prename descclassname">aws.redshift.helpers.</code><code class="sig-name descname">redshift_cluster_security_group_test_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">security_group</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aws/redshift/helpers.html#redshift_cluster_security_group_test_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.redshift.helpers.redshift_cluster_security_group_test_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 <div class="section" id="module-aws.redshift.resources">
 <span id="aws-redshift-resources-module"></span><h2>aws.redshift.resources module<a class="headerlink" href="#module-aws.redshift.resources" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="aws.redshift.resources.redshift_cluster_security_groups">
-<code class="sig-prename descclassname">aws.redshift.resources.</code><code class="sig-name descname">redshift_cluster_security_groups</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aws/redshift/resources.html#redshift_cluster_security_groups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.redshift.resources.redshift_cluster_security_groups" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="http://botocore.readthedocs.io/en/latest/reference/services/redshift.html#Redshift.Client.describe_cluster_security_groups">http://botocore.readthedocs.io/en/latest/reference/services/redshift.html#Redshift.Client.describe_cluster_security_groups</a></p>
-</dd></dl>
-
-<dl class="py function">
 <dt id="aws.redshift.resources.redshift_clusters">
 <code class="sig-prename descclassname">aws.redshift.resources.</code><code class="sig-name descname">redshift_clusters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aws/redshift/resources.html#redshift_clusters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.redshift.resources.redshift_clusters" title="Permalink to this definition">¶</a></dt>
 <dd><p>botocore.readthedocs.io/en/latest/reference/services/redshift.html#Redshift.Client.describe_clusters</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="aws.redshift.resources.redshift_cluster_security_groups">
+<code class="sig-prename descclassname">aws.redshift.resources.</code><code class="sig-name descname">redshift_cluster_security_groups</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aws/redshift/resources.html#redshift_cluster_security_groups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.redshift.resources.redshift_cluster_security_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="http://botocore.readthedocs.io/en/latest/reference/services/redshift.html#Redshift.Client.describe_cluster_security_groups">http://botocore.readthedocs.io/en/latest/reference/services/redshift.html#Redshift.Client.describe_cluster_security_groups</a></p>
 </dd></dl>
 
 </div>
@@ -89,30 +107,46 @@
 </div>
 
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
+  <span id="sidebar-top"></span>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../../index.html">Frost</a></h1>
+  
+    
+  
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../../index.html">Documentation overview</a><ul>
-  </ul></li>
+  <h3>Contents</h3>
+  <ul>
+<li><a class="reference internal" href="#">aws.redshift package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-aws.redshift.helpers">aws.redshift.helpers module</a></li>
+<li><a class="reference internal" href="#module-aws.redshift.resources">aws.redshift.resources module</a></li>
+<li><a class="reference internal" href="#aws-redshift-test-redshift-security-group-does-not-allow-all-ips-access-module">aws.redshift.test_redshift_security_group_does_not_allow_all_ips_access module</a></li>
+<li><a class="reference internal" href="#module-aws.redshift">Module contents</a></li>
 </ul>
-</div>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+  <li><a href="../../index.html">Overview</a>
+    <ul>
+      <li><a href="../../Source.html">Source Code</a>
+        <ul>
+      <li><a href="modules.html">aws</a>
+        <ul>
+      <li><a href="aws.html">aws package</a>
+        <ul>
+          <li>Previous: <a href="aws.rds.html" title="previous chapter">aws.rds package</a>
+          <li>Next: <a href="aws.s3.html" title="next chapter">aws.s3 package</a></ul>
+      </li></ul>
+      </li></ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -123,32 +157,16 @@
     </div>
 </div>
 <script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2020.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../../_sources/source/aws/aws.redshift.rst.txt"
-          rel="nofollow">Page source</a>
+  
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
+  <script src="../../_static/version_warning_offset.js"></script>
 
-    
-
-    
   </body>
 </html>

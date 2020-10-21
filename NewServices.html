@@ -5,8 +5,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Adding a New Service &#8212; Frost  documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/flask.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -15,20 +16,34 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing Documentation" href="ContributingDocumentation.html" />
+    <link rel="prev" title="Mozilla Deployment" href="MozillaDeployment.html" />
+  <script>DOCUMENTATION_OPTIONS.URL_ROOT = './';</script>
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ContributingDocumentation.html" title="Contributing Documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="MozillaDeployment.html" title="Mozilla Deployment"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Frost  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Adding a New Service</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <!-- This Source Code Form is subject to the terms of the Mozilla Public
@@ -72,8 +87,8 @@ placing it into the PyTest cache. The client module typically exposes the data v
 “{service}_client” object. The PyTest framework will instantiate the client
 before any tests are run with all the configuration &amp; credential
 information provided by the configuration files and command line
-options. (See <a class="reference internal" href="source_4/Architecture.html#architecture"><span class="std std-ref">Architecture</span></a> for status of cache functionality.) (See
-<a class="reference internal" href="source_4/CodingConventions.html#offline"><span class="std std-ref">doctest offline support</span></a> for other requirements.)</p>
+options. (See <a class="reference internal" href="Architecture.html#architecture"><span class="std std-ref">Architecture</span></a> for status of cache functionality.) (See
+<a class="reference internal" href="CodingConventions.html#offline"><span class="std std-ref">doctest offline support</span></a> for other requirements.)</p>
 <p><code class="docutils literal notranslate"><span class="pre">resources.py</span></code>: holds mapping functions which convert the data from
 the cache into the format expected by the tests. This should be the only
 file which imports the instantiation of the client. (Future best
@@ -95,30 +110,41 @@ need to test.</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
+  <span id="sidebar-top"></span>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Frost</a></h1>
+  
+    
+  
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  </ul></li>
+  <h3>Contents</h3>
+  <ul>
+<li><a class="reference internal" href="#">Adding a New Service</a><ul>
+<li><a class="reference internal" href="#claim-a-name">Claim a name</a><ul>
+<li><a class="reference internal" href="#create-a-new-directory-by-that-name">Create a new directory by that name</a></li>
+<li><a class="reference internal" href="#create-default-files">Create Default Files</a></li>
 </ul>
-</div>
+</li>
+<li><a class="reference internal" href="#add-service-specific-content">Add Service Specific Content</a><ul>
+<li><a class="reference internal" href="#add-service-specific-tests">Add Service Specific Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Navigation</h3>
+<ul>
+  <li><a href="index.html">Overview</a>
+    <ul>
+          <li>Previous: <a href="MozillaDeployment.html" title="previous chapter">Mozilla Deployment</a>
+          <li>Next: <a href="ContributingDocumentation.html" title="next chapter">Contributing Documentation</a>
+    </ul>
+  </li>
+</ul>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -129,32 +155,16 @@ need to test.</p>
     </div>
 </div>
 <script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2020.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/NewServices.rst.txt"
-          rel="nofollow">Page source</a>
+  
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
+  <script src="_static/version_warning_offset.js"></script>
 
-    
-
-    
   </body>
 </html>

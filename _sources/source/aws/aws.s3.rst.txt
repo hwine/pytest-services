@@ -84,7 +84,6 @@ aws.s3.test\_s3\_bucket\_web\_hosting\_disabled module
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 

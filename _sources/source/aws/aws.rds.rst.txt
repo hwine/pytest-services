@@ -100,7 +100,6 @@ aws.rds.test\_rds\_db\_snapshot\_not\_publicly\_accessible module
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 

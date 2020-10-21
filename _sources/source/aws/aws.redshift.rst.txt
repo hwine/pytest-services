@@ -28,7 +28,6 @@ aws.redshift.test\_redshift\_security\_group\_does\_not\_allow\_all\_ips\_access
    :undoc-members:
    :show-inheritance:
 
-
 Module contents
 ---------------
 
