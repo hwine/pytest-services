@@ -16,8 +16,6 @@
     <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="gcp.iam package" href="gcp.iam.html" />
-    <link rel="prev" title="gcp.bigquery package" href="gcp.bigquery.html" />
   <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../';</script>
    
   </head><body>
@@ -30,15 +28,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="right" >
-          <a href="gcp.iam.html" title="gcp.iam package"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="gcp.bigquery.html" title="gcp.bigquery package"
-             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Frost  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="modules.html" >frost</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="gcp.html" accesskey="U">gcp package</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">gcp.compute package</a></li> 
       </ul>
     </div>  
@@ -91,7 +81,7 @@
 
 <dl class="py function">
 <dt id="gcp.compute.helpers.does_firewall_open_any_ports_to_all">
-<code class="sig-prename descclassname">gcp.compute.helpers.</code><code class="sig-name descname">does_firewall_open_any_ports_to_all</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">firewall</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gcp/compute/helpers.html#does_firewall_open_any_ports_to_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gcp.compute.helpers.does_firewall_open_any_ports_to_all" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">gcp.compute.helpers.</code><code class="sig-name descname">does_firewall_open_any_ports_to_all</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">firewall</span></em>, <em class="sig-param"><span class="n">allowed_ports</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gcp/compute/helpers.html#does_firewall_open_any_ports_to_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gcp.compute.helpers.does_firewall_open_any_ports_to_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns True if firewall has a rule to open any ports (except 80/443) to all. Excludes ICMP.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">does_firewall_open_any_ports_to_all</span><span class="p">({})</span>
 <span class="go">False</span>
@@ -205,16 +195,7 @@
 <h3>Navigation</h3>
 <ul>
   <li><a href="../index.html">Overview</a>
-    <ul>
-      <li><a href="modules.html">frost</a>
-        <ul>
-      <li><a href="gcp.html">gcp package</a>
-        <ul>
-          <li>Previous: <a href="gcp.bigquery.html" title="previous chapter">gcp.bigquery package</a>
-          <li>Next: <a href="gcp.iam.html" title="next chapter">gcp.iam package</a></ul>
-      </li></ul>
-      </li>
-    </ul>
+    
   </li>
 </ul>
 <div id="searchbox" style="display: none" role="search">

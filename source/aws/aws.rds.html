@@ -184,6 +184,22 @@
 <code class="sig-prename descclassname">aws.rds.helpers.</code><code class="sig-name descname">get_db_security_group_arn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sg</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aws/rds/helpers.html#get_db_security_group_arn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.rds.helpers.get_db_security_group_arn" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py function">
+<dt id="aws.rds.helpers.rds_db_snapshot_not_too_old">
+<code class="sig-prename descclassname">aws.rds.helpers.</code><code class="sig-name descname">rds_db_snapshot_not_too_old</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snapshot</span></em>, <em class="sig-param"><span class="n">snapshot_created_days_ago</span><span class="o">=</span><span class="default_value">365</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aws/rds/helpers.html#rds_db_snapshot_not_too_old"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.rds.helpers.rds_db_snapshot_not_too_old" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check a rds snapshot is created “snapshot_created_days_ago”.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timezone</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rds_db_snapshot_not_too_old</span><span class="p">({</span><span class="s2">&quot;SnapshotCreateTime&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)})</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rds_db_snapshot_not_too_old</span><span class="p">({</span><span class="s2">&quot;SnapshotCreateTime&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="s2">&quot;2019-09-11T19:45:22.116+00:00&quot;</span><span class="p">)})</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 <div class="section" id="module-aws.rds.resources">
 <span id="aws-rds-resources-module"></span><h2>aws.rds.resources module<a class="headerlink" href="#module-aws.rds.resources" title="Permalink to this headline">¶</a></h2>
@@ -259,6 +275,9 @@
 <div class="section" id="aws-rds-test-rds-db-snapshot-not-publicly-accessible-module">
 <h2>aws.rds.test_rds_db_snapshot_not_publicly_accessible module<a class="headerlink" href="#aws-rds-test-rds-db-snapshot-not-publicly-accessible-module" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="aws-rds-test-rds-db-snapshot-not-too-old-module">
+<h2>aws.rds.test_rds_db_snapshot_not_too_old module<a class="headerlink" href="#aws-rds-test-rds-db-snapshot-not-too-old-module" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="module-aws.rds">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-aws.rds" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -292,6 +311,7 @@
 <li><a class="reference internal" href="#aws-rds-test-rds-db-security-group-does-not-grant-public-access-module">aws.rds.test_rds_db_security_group_does_not_grant_public_access module</a></li>
 <li><a class="reference internal" href="#aws-rds-test-rds-db-snapshot-encrypted-module">aws.rds.test_rds_db_snapshot_encrypted module</a></li>
 <li><a class="reference internal" href="#aws-rds-test-rds-db-snapshot-not-publicly-accessible-module">aws.rds.test_rds_db_snapshot_not_publicly_accessible module</a></li>
+<li><a class="reference internal" href="#aws-rds-test-rds-db-snapshot-not-too-old-module">aws.rds.test_rds_db_snapshot_not_too_old module</a></li>
 <li><a class="reference internal" href="#module-aws.rds">Module contents</a></li>
 </ul>
 </li>

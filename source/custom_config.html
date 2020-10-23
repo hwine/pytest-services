@@ -16,8 +16,6 @@
     <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="exemptions module" href="exemptions.html" />
-    <link rel="prev" title="conftest module" href="conftest.html" />
   <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../';</script>
    
   </head><body>
@@ -30,14 +28,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="right" >
-          <a href="exemptions.html" title="exemptions module"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="conftest.html" title="conftest module"
-             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Frost  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">frost</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">custom_config module</a></li> 
       </ul>
     </div>  
@@ -74,22 +65,22 @@
 <code class="sig-name descname">created_after</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/custom_config.html#CustomConfigMixin.created_after"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#custom_config.CustomConfigMixin.created_after" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt id="custom_config.CustomConfigMixin.get_allowed_ports">
+<code class="sig-name descname">get_allowed_ports</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">test_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/custom_config.html#CustomConfigMixin.get_allowed_ports"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#custom_config.CustomConfigMixin.get_allowed_ports" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="custom_config.CustomConfigMixin.get_allowed_ports_from_test_id">
+<code class="sig-name descname">get_allowed_ports_from_test_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">test_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/custom_config.html#CustomConfigMixin.get_allowed_ports_from_test_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#custom_config.CustomConfigMixin.get_allowed_ports_from_test_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt id="custom_config.AWSConfig">
 <em class="property">class </em><code class="sig-prename descclassname">custom_config.</code><code class="sig-name descname">AWSConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/custom_config.html#AWSConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#custom_config.AWSConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#custom_config.CustomConfigMixin" title="custom_config.CustomConfigMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">custom_config.CustomConfigMixin</span></code></a></p>
-<dl class="py method">
-<dt id="custom_config.AWSConfig.get_whitelisted_ports">
-<code class="sig-name descname">get_whitelisted_ports</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">test_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/custom_config.html#AWSConfig.get_whitelisted_ports"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#custom_config.AWSConfig.get_whitelisted_ports" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="custom_config.AWSConfig.get_whitelisted_ports_from_test_id">
-<code class="sig-name descname">get_whitelisted_ports_from_test_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">test_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/custom_config.html#AWSConfig.get_whitelisted_ports_from_test_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#custom_config.AWSConfig.get_whitelisted_ports_from_test_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt id="custom_config.AWSConfig.get_access_key_expiration_date">
 <code class="sig-name descname">get_access_key_expiration_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/custom_config.html#AWSConfig.get_access_key_expiration_date"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#custom_config.AWSConfig.get_access_key_expiration_date" title="Permalink to this definition">¶</a></dt>
@@ -100,7 +91,7 @@
 <dl class="py class">
 <dt id="custom_config.GCPConfig">
 <em class="property">class </em><code class="sig-prename descclassname">custom_config.</code><code class="sig-name descname">GCPConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/custom_config.html#GCPConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#custom_config.GCPConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#custom_config.CustomConfigMixin" title="custom_config.CustomConfigMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">custom_config.CustomConfigMixin</span></code></a></p>
 </dd></dl>
 
 <dl class="py class">
@@ -131,13 +122,7 @@
 <h3>Navigation</h3>
 <ul>
   <li><a href="../index.html">Overview</a>
-    <ul>
-      <li><a href="modules.html">frost</a>
-        <ul>
-          <li>Previous: <a href="conftest.html" title="previous chapter">conftest module</a>
-          <li>Next: <a href="exemptions.html" title="next chapter">exemptions module</a></ul>
-      </li>
-    </ul>
+    
   </li>
 </ul>
 <div id="searchbox" style="display: none" role="search">

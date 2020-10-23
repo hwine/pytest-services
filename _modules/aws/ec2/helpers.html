@@ -252,7 +252,7 @@
 
 
 <div class="viewcode-block" id="ec2_security_group_opens_specific_ports_to_all"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ec2_security_group_opens_specific_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">ec2_security_group_opens_specific_ports_to_all</span><span class="p">(</span>
-    <span class="n">ec2_security_group</span><span class="p">,</span> <span class="n">whitelisted_ports</span><span class="o">=</span><span class="kc">None</span>
+    <span class="n">ec2_security_group</span><span class="p">,</span> <span class="n">allowed_ports</span><span class="o">=</span><span class="kc">None</span>
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if an ec2 security group includes a permission</span>
@@ -279,8 +279,8 @@
 <span class="sd">    &gt;&gt;&gt; ec2_security_group_opens_specific_ports_to_all([])</span>
 <span class="sd">    False</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">whitelisted_ports</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">whitelisted_ports</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">allowed_ports</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">allowed_ports</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">if</span> <span class="s2">&quot;IpPermissions&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ec2_security_group</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
@@ -297,7 +297,7 @@
             <span class="k">if</span> <span class="n">from_port</span> <span class="o">==</span> <span class="n">to_port</span> <span class="ow">and</span> <span class="n">from_port</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">443</span><span class="p">]:</span>
                 <span class="k">continue</span>
 
-            <span class="k">if</span> <span class="n">from_port</span> <span class="o">==</span> <span class="n">to_port</span> <span class="ow">and</span> <span class="n">from_port</span> <span class="ow">in</span> <span class="n">whitelisted_ports</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">from_port</span> <span class="o">==</span> <span class="n">to_port</span> <span class="ow">and</span> <span class="n">from_port</span> <span class="ow">in</span> <span class="n">allowed_ports</span><span class="p">:</span>
                 <span class="k">continue</span>
 
             <span class="k">return</span> <span class="kc">True</span>
@@ -437,6 +437,27 @@
             <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="ebs_snapshot_not_too_old"><a class="viewcode-back" href="../../../source/aws/aws.ec2.html#aws.ec2.helpers.ebs_snapshot_not_too_old">[docs]</a><span class="k">def</span> <span class="nf">ebs_snapshot_not_too_old</span><span class="p">(</span><span class="n">snapshot</span><span class="p">,</span> <span class="n">snapshot_started_days_ago</span><span class="o">=</span><span class="mi">365</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check an ebs snapshot is created less than &quot;snapshot_started_days_ago&quot;.</span>
+
+<span class="sd">    &gt;&gt;&gt; from datetime import datetime</span>
+<span class="sd">    &gt;&gt;&gt; from datetime import timezone</span>
+<span class="sd">    &gt;&gt;&gt; from aws.ec2.helpers import ebs_snapshot_not_too_old</span>
+<span class="sd">    &gt;&gt;&gt; ebs_snapshot_not_too_old({&quot;StartTime&quot;: datetime.now(timezone.utc)})</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; ebs_snapshot_not_too_old({&quot;StartTime&quot;: datetime.fromisoformat(&quot;2019-09-11T19:45:22.116+00:00&quot;)})</span>
+<span class="sd">    False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">snapshot</span><span class="p">[</span><span class="s2">&quot;StartTime&quot;</span><span class="p">]</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">&lt;</span> <span class="n">snapshot_started_days_ago</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 </pre></div>
 
             <div class="clearer"></div>

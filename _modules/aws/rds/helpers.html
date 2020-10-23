@@ -40,7 +40,8 @@
           <div class="body" role="main">
             
   <h1>Source code for aws.rds.helpers</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">helpers</span> <span class="kn">import</span> <span class="n">get_param_id</span>
+<span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">helpers</span> <span class="kn">import</span> <span class="n">get_param_id</span>
 
 
 <div class="viewcode-block" id="is_rds_db_snapshot_attr_public_access"><a class="viewcode-back" href="../../../source/aws/aws.rds.html#aws.rds.helpers.is_rds_db_snapshot_attr_public_access">[docs]</a><span class="k">def</span> <span class="nf">is_rds_db_snapshot_attr_public_access</span><span class="p">(</span><span class="n">rds_db_snapshot_attribute</span><span class="p">):</span>
@@ -181,6 +182,27 @@
 
 <div class="viewcode-block" id="get_db_security_group_arn"><a class="viewcode-back" href="../../../source/aws/aws.rds.html#aws.rds.helpers.get_db_security_group_arn">[docs]</a><span class="k">def</span> <span class="nf">get_db_security_group_arn</span><span class="p">(</span><span class="n">sg</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">get_param_id</span><span class="p">(</span><span class="n">sg</span><span class="p">,</span> <span class="s2">&quot;DBSecurityGroupArn&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="rds_db_snapshot_not_too_old"><a class="viewcode-back" href="../../../source/aws/aws.rds.html#aws.rds.helpers.rds_db_snapshot_not_too_old">[docs]</a><span class="k">def</span> <span class="nf">rds_db_snapshot_not_too_old</span><span class="p">(</span><span class="n">snapshot</span><span class="p">,</span> <span class="n">snapshot_created_days_ago</span><span class="o">=</span><span class="mi">365</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check a rds snapshot is created &quot;snapshot_created_days_ago&quot;.</span>
+
+<span class="sd">    &gt;&gt;&gt; from datetime import datetime</span>
+<span class="sd">    &gt;&gt;&gt; from datetime import timezone</span>
+
+<span class="sd">    &gt;&gt;&gt; rds_db_snapshot_not_too_old({&quot;SnapshotCreateTime&quot;: datetime.now(timezone.utc)})</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; rds_db_snapshot_not_too_old({&quot;SnapshotCreateTime&quot;: datetime.fromisoformat(&quot;2019-09-11T19:45:22.116+00:00&quot;)})</span>
+<span class="sd">    False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">create_time</span> <span class="o">=</span> <span class="n">snapshot</span><span class="p">[</span><span class="s2">&quot;SnapshotCreateTime&quot;</span><span class="p">]</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">create_time</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">create_time</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">&lt;</span> <span class="n">snapshot_created_days_ago</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 </pre></div>
 
             <div class="clearer"></div>

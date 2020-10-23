@@ -28,6 +28,14 @@ aws.ec2.test\_ec2\_all\_eips\_bound module
    :undoc-members:
    :show-inheritance:
 
+aws.ec2.test\_ec2\_ebs\_snapshot\_not\_too\_old module
+------------------------------------------------------
+
+.. automodule:: aws.ec2.test_ec2_ebs_snapshot_not_too_old
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 aws.ec2.test\_ec2\_ebs\_snapshots\_are\_private module
 ------------------------------------------------------
 

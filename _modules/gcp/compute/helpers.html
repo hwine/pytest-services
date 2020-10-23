@@ -104,7 +104,7 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<div class="viewcode-block" id="does_firewall_open_any_ports_to_all"><a class="viewcode-back" href="../../../source/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_any_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">does_firewall_open_any_ports_to_all</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
+<div class="viewcode-block" id="does_firewall_open_any_ports_to_all"><a class="viewcode-back" href="../../../source/gcp/gcp.compute.html#gcp.compute.helpers.does_firewall_open_any_ports_to_all">[docs]</a><span class="k">def</span> <span class="nf">does_firewall_open_any_ports_to_all</span><span class="p">(</span><span class="n">firewall</span><span class="p">,</span> <span class="n">allowed_ports</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns True if firewall has a rule to open any ports (except 80/443) to all. Excludes ICMP.</span>
 
@@ -127,6 +127,9 @@
 <span class="sd">    &gt;&gt;&gt; does_firewall_open_any_ports_to_all({&#39;sourceRanges&#39;: [&#39;0.0.0.0/0&#39;], &#39;allowed&#39;: [{&#39;ports&#39;: [&#39;22&#39;, &#39;80&#39;, &#39;443&#39;]}]})</span>
 <span class="sd">    True</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">allowed_ports</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">allowed_ports</span> <span class="o">=</span> <span class="p">[]</span>
+
     <span class="k">if</span> <span class="n">does_firewall_open_all_ports_to_all</span><span class="p">(</span><span class="n">firewall</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">True</span>
 
@@ -140,7 +143,15 @@
         <span class="k">if</span> <span class="n">rule</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;IPProtocol&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;icmp&quot;</span><span class="p">:</span>
             <span class="k">continue</span>
         <span class="k">for</span> <span class="n">port_rule</span> <span class="ow">in</span> <span class="n">rule</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ports&quot;</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">port_rule</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;80&quot;</span><span class="p">,</span> <span class="s2">&quot;443&quot;</span><span class="p">]:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">port_rule</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">port_rule</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+
+            <span class="k">if</span> <span class="n">port_rule</span> <span class="ow">in</span> <span class="n">allowed_ports</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="n">port_rule</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">443</span><span class="p">]:</span>
                 <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">return</span> <span class="kc">False</span></div>

@@ -63,8 +63,8 @@ that third party services are configured correctly. For example:</p>
 <div class="section" id="installing">
 <h3>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li><p>install <a class="reference external" href="https://www.python.org/downloads/">Python 3.8</a></p></li>
-<li><p>Run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">frost</span></code></p></li>
+<li><p>Install <a class="reference external" href="https://www.python.org/downloads/">Python 3.8</a></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:mozilla/frost.git;</span> <span class="pre">cd</span> <span class="pre">frost;</span> <span class="pre">make</span> <span class="pre">install</span></code></p></li>
 </ol>
 </div>
 <div class="section" id="id1">
@@ -321,9 +321,34 @@ The cache can be disabled entirely with <a class="reference external" href="http
   <span class="n">required_amis</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">ami</span><span class="o">-</span><span class="mi">00000000000000000</span>
     <span class="o">-</span> <span class="n">ami</span><span class="o">-</span><span class="mi">55555555555555555</span>
-  <span class="n">whitelisted_ports_global</span><span class="p">:</span>
+  <span class="c1"># Allowed ports for the test_ec2_security_group_opens_specific_ports_to_all</span>
+  <span class="c1"># test for all instances</span>
+  <span class="n">allowed_ports_global</span><span class="p">:</span>
     <span class="o">-</span> <span class="mi">25</span>
-  <span class="n">whitelisted_ports</span><span class="p">:</span>
+  <span class="c1"># Allowed ports for the test_ec2_security_group_opens_specific_ports_to_all</span>
+  <span class="c1"># test for specific instances. In this example, we are allowing ports 22</span>
+  <span class="c1"># and 2222 for all security groups that include the word &#39;bastion&#39; in them.</span>
+  <span class="n">allowed_ports</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">test_param_id</span><span class="p">:</span> <span class="s1">&#39;*bastion&#39;</span>
+      <span class="n">ports</span><span class="p">:</span>
+        <span class="o">-</span> <span class="mi">22</span>
+        <span class="o">-</span> <span class="mi">2222</span>
+<span class="n">gcp</span><span class="p">:</span>
+  <span class="n">allowed_org_domains</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">mygsuiteorg</span><span class="o">.</span><span class="n">com</span>
+  <span class="n">allowed_gke_versions</span><span class="p">:</span>
+    <span class="o">-</span> <span class="mf">1.15</span><span class="o">.</span><span class="mi">12</span><span class="o">-</span><span class="n">gke</span><span class="o">.</span><span class="mi">20</span>
+    <span class="o">-</span> <span class="mf">1.16</span><span class="o">.</span><span class="mi">13</span><span class="o">-</span><span class="n">gke</span><span class="o">.</span><span class="mi">401</span>
+    <span class="o">-</span> <span class="mf">1.17</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="n">gke</span><span class="o">.</span><span class="mi">1504</span>
+    <span class="o">-</span> <span class="mf">1.18</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="n">gke</span><span class="o">.</span><span class="mi">3504</span>
+  <span class="c1"># Allowed ports for the test_firewall_opens_any_ports_to_all</span>
+  <span class="c1"># test for all firewalls</span>
+  <span class="n">allowed_ports_global</span><span class="p">:</span>
+    <span class="o">-</span> <span class="mi">25</span>
+  <span class="c1"># Allowed ports for the test_firewall_opens_any_ports_to_all</span>
+  <span class="c1"># test for specific firewalls. In this example, we are allowing ports 22</span>
+  <span class="c1"># and 2222 for all firewalls that include the word &#39;bastion&#39; in them.</span>
+  <span class="n">allowed_ports</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">test_param_id</span><span class="p">:</span> <span class="s1">&#39;*bastion&#39;</span>
       <span class="n">ports</span><span class="p">:</span>
         <span class="o">-</span> <span class="mi">22</span>
@@ -480,14 +505,14 @@ to these tests.</p>
     <span class="o">-</span> <span class="n">Type</span>
     <span class="o">-</span> <span class="n">App</span>
     <span class="o">-</span> <span class="n">Env</span>
-  <span class="c1"># Whitelsited ports for the test_ec2_security_group_opens_specific_ports_to_all</span>
+  <span class="c1"># Allowed ports for the test_ec2_security_group_opens_specific_ports_to_all</span>
   <span class="c1"># test for all instances</span>
-  <span class="n">whitelisted_ports_global</span><span class="p">:</span>
+  <span class="n">allowed_ports_global</span><span class="p">:</span>
     <span class="o">-</span> <span class="mi">25</span>
-  <span class="c1"># Whitelsited ports for the test_ec2_security_group_opens_specific_ports_to_all</span>
-  <span class="c1"># test for specific instances. In this example, we are whitelisting ports 22</span>
+  <span class="c1"># Allowed ports for the test_ec2_security_group_opens_specific_ports_to_all</span>
+  <span class="c1"># test for specific instances. In this example, we are allowing ports 22</span>
   <span class="c1"># and 2222 for all security groups that include the word &#39;bastion&#39; in them.</span>
-  <span class="n">whitelisted_ports</span><span class="p">:</span>
+  <span class="n">allowed_ports</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">test_param_id</span><span class="p">:</span> <span class="s1">&#39;*bastion&#39;</span>
       <span class="n">ports</span><span class="p">:</span>
         <span class="o">-</span> <span class="mi">22</span>

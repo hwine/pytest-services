@@ -16,8 +16,6 @@
     <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="aws.elasticache package" href="aws.elasticache.html" />
-    <link rel="prev" title="aws.cloudtrail package" href="aws.cloudtrail.html" />
   <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../';</script>
    
   </head><body>
@@ -30,15 +28,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="right" >
-          <a href="aws.elasticache.html" title="aws.elasticache package"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="aws.cloudtrail.html" title="aws.cloudtrail package"
-             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Frost  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="modules.html" >frost</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="aws.html" accesskey="U">aws package</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">aws.ec2 package</a></li> 
       </ul>
     </div>  
@@ -209,7 +199,7 @@ or if protocol is ICMP.</p>
 
 <dl class="py function">
 <dt id="aws.ec2.helpers.ec2_security_group_opens_specific_ports_to_all">
-<code class="sig-prename descclassname">aws.ec2.helpers.</code><code class="sig-name descname">ec2_security_group_opens_specific_ports_to_all</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ec2_security_group</span></em>, <em class="sig-param"><span class="n">whitelisted_ports</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/aws/ec2/helpers.html#ec2_security_group_opens_specific_ports_to_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.ec2.helpers.ec2_security_group_opens_specific_ports_to_all" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">aws.ec2.helpers.</code><code class="sig-name descname">ec2_security_group_opens_specific_ports_to_all</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ec2_security_group</span></em>, <em class="sig-param"><span class="n">allowed_ports</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/aws/ec2/helpers.html#ec2_security_group_opens_specific_ports_to_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.ec2.helpers.ec2_security_group_opens_specific_ports_to_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns True if an ec2 security group includes a permission
 allowing all IPs inbound access on specific unsafe ports and False
 otherwise or if protocol is ICMP.</p>
@@ -355,6 +345,21 @@ parameter allows checking for volumes that were created that many days ago.</p>
 </div>
 </dd></dl>
 
+<dl class="py function">
+<dt id="aws.ec2.helpers.ebs_snapshot_not_too_old">
+<code class="sig-prename descclassname">aws.ec2.helpers.</code><code class="sig-name descname">ebs_snapshot_not_too_old</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snapshot</span></em>, <em class="sig-param"><span class="n">snapshot_started_days_ago</span><span class="o">=</span><span class="default_value">365</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/aws/ec2/helpers.html#ebs_snapshot_not_too_old"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.ec2.helpers.ebs_snapshot_not_too_old" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check an ebs snapshot is created less than “snapshot_started_days_ago”.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">aws.ec2.helpers</span> <span class="kn">import</span> <span class="n">ebs_snapshot_not_too_old</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ebs_snapshot_not_too_old</span><span class="p">({</span><span class="s2">&quot;StartTime&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)})</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ebs_snapshot_not_too_old</span><span class="p">({</span><span class="s2">&quot;StartTime&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="s2">&quot;2019-09-11T19:45:22.116+00:00&quot;</span><span class="p">)})</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 <div class="section" id="module-aws.ec2.resources">
 <span id="aws-ec2-resources-module"></span><h2>aws.ec2.resources module<a class="headerlink" href="#module-aws.ec2.resources" title="Permalink to this headline">¶</a></h2>
@@ -431,6 +436,9 @@ which is True if it is associated with at least one resource.</p>
 <div class="section" id="aws-ec2-test-ec2-all-eips-bound-module">
 <h2>aws.ec2.test_ec2_all_eips_bound module<a class="headerlink" href="#aws-ec2-test-ec2-all-eips-bound-module" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="aws-ec2-test-ec2-ebs-snapshot-not-too-old-module">
+<h2>aws.ec2.test_ec2_ebs_snapshot_not_too_old module<a class="headerlink" href="#aws-ec2-test-ec2-ebs-snapshot-not-too-old-module" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="aws-ec2-test-ec2-ebs-snapshots-are-private-module">
 <h2>aws.ec2.test_ec2_ebs_snapshots_are_private module<a class="headerlink" href="#aws-ec2-test-ec2-ebs-snapshots-are-private-module" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -488,6 +496,7 @@ which is True if it is associated with at least one resource.</p>
 <li><a class="reference internal" href="#module-aws.ec2.helpers">aws.ec2.helpers module</a></li>
 <li><a class="reference internal" href="#module-aws.ec2.resources">aws.ec2.resources module</a></li>
 <li><a class="reference internal" href="#aws-ec2-test-ec2-all-eips-bound-module">aws.ec2.test_ec2_all_eips_bound module</a></li>
+<li><a class="reference internal" href="#aws-ec2-test-ec2-ebs-snapshot-not-too-old-module">aws.ec2.test_ec2_ebs_snapshot_not_too_old module</a></li>
 <li><a class="reference internal" href="#aws-ec2-test-ec2-ebs-snapshots-are-private-module">aws.ec2.test_ec2_ebs_snapshots_are_private module</a></li>
 <li><a class="reference internal" href="#aws-ec2-test-ec2-ebs-volume-encrypted-module">aws.ec2.test_ec2_ebs_volume_encrypted module</a></li>
 <li><a class="reference internal" href="#aws-ec2-test-ec2-ebs-volume-not-piops-module">aws.ec2.test_ec2_ebs_volume_not_piops module</a></li>
@@ -506,16 +515,7 @@ which is True if it is associated with at least one resource.</p>
 <h3>Navigation</h3>
 <ul>
   <li><a href="../index.html">Overview</a>
-    <ul>
-      <li><a href="modules.html">frost</a>
-        <ul>
-      <li><a href="aws.html">aws package</a>
-        <ul>
-          <li>Previous: <a href="aws.cloudtrail.html" title="previous chapter">aws.cloudtrail package</a>
-          <li>Next: <a href="aws.elasticache.html" title="next chapter">aws.elasticache package</a></ul>
-      </li></ul>
-      </li>
-    </ul>
+    
   </li>
 </ul>
 <div id="searchbox" style="display: none" role="search">

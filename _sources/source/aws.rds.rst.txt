@@ -100,6 +100,14 @@ aws.rds.test\_rds\_db\_snapshot\_not\_publicly\_accessible module
    :undoc-members:
    :show-inheritance:
 
+aws.rds.test\_rds\_db\_snapshot\_not\_too\_old module
+-----------------------------------------------------
+
+.. automodule:: aws.rds.test_rds_db_snapshot_not_too_old
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
