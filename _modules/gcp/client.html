@@ -128,7 +128,7 @@
                     <span class="o">.</span><span class="n">getIamPolicy</span><span class="p">(</span><span class="n">resource</span><span class="o">=</span><span class="n">project_id</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="p">{})</span>
                     <span class="o">.</span><span class="n">execute</span><span class="p">()</span>
                 <span class="p">)</span>
-                <span class="n">policies</span> <span class="o">+=</span> <span class="n">resp</span>
+                <span class="n">policies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
             <span class="k">except</span> <span class="n">HttpError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                 <span class="k">if</span> <span class="s2">&quot;has not been used in project&quot;</span> <span class="ow">in</span> <span class="n">e</span><span class="o">.</span><span class="n">_get_reason</span><span class="p">():</span>
                     <span class="k">continue</span>

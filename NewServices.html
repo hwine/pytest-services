@@ -101,6 +101,21 @@ tests.  If caching is not important, the traditional approach may be used.</p>
 <p>Tests for these support files should be included as doc tests whenever
 practical. If possible, the default of executing the module should be to run
 the doc tests.</p>
+<div class="section" id="conventions-for-parametrization">
+<h3>Conventions for Parametrization<a class="headerlink" href="#conventions-for-parametrization" title="Permalink to this headline">¶</a></h3>
+<p>One of the enhancements Frost makes to pytest is simplifying the task of getting test specific metadata into the JSON file to simplify downstream processing. To access this feature, you need to follow a few conventions that are unique to Frost.</p>
+<p>When you use the <code class="docutils literal notranslate"><span class="pre">pytest.mark.parametrize</span></code> function, you supply two key arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">argvalues</span></code> (2nd argument) - an iterable where each item contains information for one execution of the test.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ids</span></code> (keyword argument) - a iterable where which results in a text string displayed, in addition to the test name, to uniquly identify one execution of the test. (See the <a class="reference external" href="https://docs.pytest.org/en/stable/reference.html#pytest.python.Metafunc.parametrize">pytest documentation</a> for details.)</p></li>
+</ul>
+<p>For any values you want to appear in the JSON output, <code class="docutils literal notranslate"><span class="pre">argvalues</span></code> should supply a dictionary with a unique-to-context key value. To actually insert the key, value pair into the output JSON, you must also specify the key in the global set <code class="docutils literal notranslate"><span class="pre">METADATA_KEYS</span></code>. Presence of the key in that set is what triggers the frost additions to put the key, value pair into the output JSON.  One way to do that is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">conftest</span> <span class="kn">import</span> <span class="n">METADATA_KEYS</span>
+
+<span class="n">METADATA_KEYS</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;key_1&quot;</span><span class="p">,</span> <span class="s2">&quot;key_2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="add-service-specific-tests">
 <h3>Add Service Specific Tests<a class="headerlink" href="#add-service-specific-tests" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">test_*.py</span></code>: normal PyTest tests, which each import the resources they
@@ -130,6 +145,7 @@ need to test.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#add-service-specific-content">Add Service Specific Content</a><ul>
+<li><a class="reference internal" href="#conventions-for-parametrization">Conventions for Parametrization</a></li>
 <li><a class="reference internal" href="#add-service-specific-tests">Add Service Specific Tests</a></li>
 </ul>
 </li>

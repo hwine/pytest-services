@@ -37,14 +37,6 @@ aws.conftest module
    :undoc-members:
    :show-inheritance:
 
-aws.test\_ec2\_ebs\_volume\_attached\_to\_instance module
----------------------------------------------------------
-
-.. automodule:: aws.test_ec2_ebs_volume_attached_to_instance
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 Module contents
 ---------------
 
