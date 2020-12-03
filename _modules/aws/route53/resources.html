@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>aws.autoscaling.resources &#8212; Frost  documentation</title>
+    <title>aws.route53.resources &#8212; Frost  documentation</title>
     <link rel="stylesheet" href="../../../_static/flask.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
              >modules</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../index.html">Frost  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">aws.autoscaling.resources</a></li> 
+        <li class="nav-item nav-item-this"><a href="">aws.route53.resources</a></li> 
       </ul>
     </div>  
 
@@ -40,20 +40,38 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1>Source code for aws.autoscaling.resources</h1><div class="highlight"><pre>
+  <h1>Source code for aws.route53.resources</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">conftest</span> <span class="kn">import</span> <span class="n">botocore_client</span>
 
 
-<div class="viewcode-block" id="autoscaling_launch_configurations"><a class="viewcode-back" href="../../../source/aws/aws.autoscaling.html#aws.autoscaling.resources.autoscaling_launch_configurations">[docs]</a><span class="k">def</span> <span class="nf">autoscaling_launch_configurations</span><span class="p">():</span>
+<div class="viewcode-block" id="zones"><a class="viewcode-back" href="../../../source/aws/aws.route53.html#aws.route53.resources.zones">[docs]</a><span class="k">def</span> <span class="nf">zones</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    http://botocore.readthedocs.io/en/latest/reference/services/autoscaling.html#AutoScaling.Client.describe_launch_configurations</span>
+<span class="sd">    https://botocore.amazonaws.com/v1/documentation/api/latest/reference/services/route53.html#Route53.Client.list_hosted_zones</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
-        <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;autoscaling&quot;</span><span class="p">,</span> <span class="s2">&quot;describe_launch_configurations&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{})</span>
-        <span class="o">.</span><span class="n">extract_key</span><span class="p">(</span><span class="s2">&quot;LaunchConfigurations&quot;</span><span class="p">)</span>
+        <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;route53&quot;</span><span class="p">,</span> <span class="s2">&quot;list_hosted_zones&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{})</span>
+        <span class="o">.</span><span class="n">extract_key</span><span class="p">(</span><span class="s2">&quot;HostedZones&quot;</span><span class="p">)</span>
         <span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
         <span class="o">.</span><span class="n">values</span><span class="p">()</span>
     <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="cnames"><a class="viewcode-back" href="../../../source/aws/aws.route53.html#aws.route53.resources.cnames">[docs]</a><span class="k">def</span> <span class="nf">cnames</span><span class="p">():</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">zone</span> <span class="ow">in</span> <span class="n">zones</span><span class="p">():</span>
+        <span class="n">zone_id</span> <span class="o">=</span> <span class="n">zone</span><span class="p">[</span><span class="s2">&quot;Id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">zone_records</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="s2">&quot;route53&quot;</span><span class="p">,</span> <span class="s2">&quot;list_resource_record_sets&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span><span class="s2">&quot;HostedZoneId&quot;</span><span class="p">:</span> <span class="n">zone_id</span><span class="p">}</span>
+            <span class="p">)</span>
+            <span class="o">.</span><span class="n">extract_key</span><span class="p">(</span><span class="s2">&quot;ResourceRecordSets&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">values</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="n">records</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">record</span> <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">zone_records</span> <span class="k">if</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CNAME&quot;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">records</span></div>
 </pre></div>
 
             <div class="clearer"></div>

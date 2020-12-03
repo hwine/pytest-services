@@ -14,6 +14,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/language_data.js"></script>
+    <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../';</script>
@@ -47,21 +48,23 @@
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">functools</span>
 <span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span>
 
-<span class="kn">import</span> <span class="nn">py</span>
 <span class="kn">from</span> <span class="nn">dateutil.parser</span> <span class="kn">import</span> <span class="n">isoparse</span>
+<span class="kn">import</span> <span class="nn">_pytest</span>
+<span class="kn">import</span> <span class="nn">_pytest.cacheprovider</span>
 
 
-<div class="viewcode-block" id="json_iso_datetimes"><a class="viewcode-back" href="../source/cache.html#cache.json_iso_datetimes">[docs]</a><span class="k">def</span> <span class="nf">json_iso_datetimes</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+<div class="viewcode-block" id="json_iso_datetimes"><a class="viewcode-back" href="../source/cache.html#cache.json_iso_datetimes">[docs]</a><span class="k">def</span> <span class="nf">json_iso_datetimes</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;JSON serializer for objects not serializable by default json</span>
 <span class="sd">    module.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
 
-    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Unserializable type </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span></div>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unserializable type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="json_iso_datetime_string_to_datetime"><a class="viewcode-back" href="../source/cache.html#cache.json_iso_datetime_string_to_datetime">[docs]</a><span class="k">def</span> <span class="nf">json_iso_datetime_string_to_datetime</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+<div class="viewcode-block" id="json_iso_datetime_string_to_datetime"><a class="viewcode-back" href="../source/cache.html#cache.json_iso_datetime_string_to_datetime">[docs]</a><span class="k">def</span> <span class="nf">json_iso_datetime_string_to_datetime</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;JSON object hook that converts object vals from ISO datetime</span>
 <span class="sd">    strings to python datetime.datetime`s if possible.&quot;&quot;&quot;</span>
 
@@ -77,7 +80,11 @@
     <span class="k">return</span> <span class="n">obj</span></div>
 
 
-<div class="viewcode-block" id="datetime_encode_set"><a class="viewcode-back" href="../source/cache.html#cache.datetime_encode_set">[docs]</a><span class="k">def</span> <span class="nf">datetime_encode_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="datetime_encode_set"><a class="viewcode-back" href="../source/cache.html#cache.datetime_encode_set">[docs]</a><span class="k">def</span> <span class="nf">datetime_encode_set</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">_pytest</span><span class="o">.</span><span class="n">cacheprovider</span><span class="o">.</span><span class="n">Cache</span><span class="p">,</span>
+    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;save value for the given key.</span>
 
 <span class="sd">    :param key: must be a ``/`` separated value. Usually the first</span>
@@ -102,7 +109,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_supporting_files</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="datetime_encode_get"><a class="viewcode-back" href="../source/cache.html#cache.datetime_encode_get">[docs]</a><span class="k">def</span> <span class="nf">datetime_encode_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
+<div class="viewcode-block" id="datetime_encode_get"><a class="viewcode-back" href="../source/cache.html#cache.datetime_encode_get">[docs]</a><span class="k">def</span> <span class="nf">datetime_encode_get</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">_pytest</span><span class="o">.</span><span class="n">cacheprovider</span><span class="o">.</span><span class="n">Cache</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="p">:</span> <span class="n">Any</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;return cached value for the given key.  If no value</span>
 <span class="sd">    was yet cached or the value cannot be read, the specified</span>
 <span class="sd">    default is returned.</span>
@@ -120,9 +129,11 @@
         <span class="k">return</span> <span class="n">default</span></div>
 
 
-<div class="viewcode-block" id="patch_cache_set"><a class="viewcode-back" href="../source/cache.html#cache.patch_cache_set">[docs]</a><span class="k">def</span> <span class="nf">patch_cache_set</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">set</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">datetime_encode_set</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">datetime_encode_get</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span></div>
+<div class="viewcode-block" id="patch_cache_set"><a class="viewcode-back" href="../source/cache.html#cache.patch_cache_set">[docs]</a><span class="k">def</span> <span class="nf">patch_cache_set</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">_pytest</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">Config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">cache</span><span class="p">,</span> <span class="s2">&quot;pytest does not have a cache configured to patch&quot;</span>
+    <span class="c1"># types ignored due to https://github.com/python/mypy/issues/2427</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">set</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">datetime_encode_set</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">get</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">datetime_encode_get</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
 </pre></div>
 
             <div class="clearer"></div>

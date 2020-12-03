@@ -14,6 +14,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/language_data.js"></script>
+    <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../';</script>
@@ -70,6 +71,58 @@
 <dt id="conftest.get_node_markers">
 <code class="sig-prename descclassname">conftest.</code><code class="sig-name descname">get_node_markers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conftest.html#get_node_markers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conftest.get_node_markers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py exception">
+<dt id="conftest.DuplicateKeyError">
+<em class="property">exception </em><code class="sig-prename descclassname">conftest.</code><code class="sig-name descname">DuplicateKeyError</code><a class="reference internal" href="../_modules/conftest.html#DuplicateKeyError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conftest.DuplicateKeyError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="conftest.SingleSet">
+<em class="property">class </em><code class="sig-prename descclassname">conftest.</code><code class="sig-name descname">SingleSet</code><a class="reference internal" href="../_modules/conftest.html#SingleSet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conftest.SingleSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code></p>
+<p>Set only allowing values to be added once</p>
+<p>When addition of a duplicate value is detected, the <cite>DuplicateKeyError</cite>
+exception will be raised, all non duplicate values are added to the set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>DuplicateKeyError - when adding a value already in the set</strong> – </p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span> <span class="o">=</span> <span class="n">SingleSet</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">conftest.DuplicateKeyError</span>: <span class="n">Value 3 already present</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">})</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">conftest.DuplicateKeyError</span>: <span class="n">Value(s) {3, 4} already present</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span>
+<span class="go">SingleSet({1, 2, 3, 4, 5, 6})</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p><strong>NB:</strong>
+- duplicate values on initialization are not detected
+&gt;&gt;&gt; ss = SingleSet({1, 2, 3, 4, 3, 2, 1})
+&gt;&gt;&gt; ss
+SingleSet({1, 2, 3, 4})</p>
+<dl class="py method">
+<dt id="conftest.SingleSet.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conftest.html#SingleSet.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conftest.SingleSet.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an element to a set.</p>
+<p>This has no effect if the element is already present.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="conftest.SingleSet.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">values</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conftest.html#SingleSet.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#conftest.SingleSet.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a set with the union of itself and others.</p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="py function">
 <dt id="conftest.serialize_datetimes">

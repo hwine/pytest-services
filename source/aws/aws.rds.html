@@ -14,6 +14,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/language_data.js"></script>
+    <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="aws.redshift package" href="aws.redshift.html" />
@@ -185,6 +186,11 @@
 <dd></dd></dl>
 
 <dl class="py function">
+<dt id="aws.rds.helpers.get_rds_resource_id">
+<code class="sig-prename descclassname">aws.rds.helpers.</code><code class="sig-name descname">get_rds_resource_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">resource</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aws/rds/helpers.html#get_rds_resource_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.rds.helpers.get_rds_resource_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt id="aws.rds.helpers.rds_db_snapshot_not_too_old">
 <code class="sig-prename descclassname">aws.rds.helpers.</code><code class="sig-name descname">rds_db_snapshot_not_too_old</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snapshot</span></em>, <em class="sig-param"><span class="n">snapshot_created_days_ago</span><span class="o">=</span><span class="default_value">365</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aws/rds/helpers.html#rds_db_snapshot_not_too_old"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.rds.helpers.rds_db_snapshot_not_too_old" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check a rds snapshot is created “snapshot_created_days_ago”.</p>
@@ -233,8 +239,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="aws.rds.resources.rds_db_snapshots_attributes">
-<code class="sig-prename descclassname">aws.rds.resources.</code><code class="sig-name descname">rds_db_snapshots_attributes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aws/rds/resources.html#rds_db_snapshots_attributes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.rds.resources.rds_db_snapshots_attributes" title="Permalink to this definition">¶</a></dt>
+<dt id="aws.rds.resources.rds_db_snapshot_attributes">
+<code class="sig-prename descclassname">aws.rds.resources.</code><code class="sig-name descname">rds_db_snapshot_attributes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/aws/rds/resources.html#rds_db_snapshot_attributes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#aws.rds.resources.rds_db_snapshot_attributes" title="Permalink to this definition">¶</a></dt>
 <dd><p><a class="reference external" href="http://botocore.readthedocs.io/en/latest/reference/services/rds.html#RDS.Client.describe_db_snapshot_attributes">http://botocore.readthedocs.io/en/latest/reference/services/rds.html#RDS.Client.describe_db_snapshot_attributes</a></p>
 </dd></dl>
 

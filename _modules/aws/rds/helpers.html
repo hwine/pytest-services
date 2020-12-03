@@ -14,6 +14,7 @@
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/language_data.js"></script>
+    <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../../../';</script>
@@ -182,6 +183,24 @@
 
 <div class="viewcode-block" id="get_db_security_group_arn"><a class="viewcode-back" href="../../../source/aws/aws.rds.html#aws.rds.helpers.get_db_security_group_arn">[docs]</a><span class="k">def</span> <span class="nf">get_db_security_group_arn</span><span class="p">(</span><span class="n">sg</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">get_param_id</span><span class="p">(</span><span class="n">sg</span><span class="p">,</span> <span class="s2">&quot;DBSecurityGroupArn&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_rds_resource_id"><a class="viewcode-back" href="../../../source/aws/aws.rds.html#aws.rds.helpers.get_rds_resource_id">[docs]</a><span class="k">def</span> <span class="nf">get_rds_resource_id</span><span class="p">(</span><span class="n">resource</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;DBInstanceIdentifier&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_db_instance_id</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;DBSnapshotArn&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_db_snapshot_arn</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;DBSecurityGroupArn&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_db_security_group_arn</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;AttributeName&quot;</span> <span class="ow">in</span> <span class="n">resource</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_param_id</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="s2">&quot;AttributeName&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;empty&quot;</span>
+        <span class="k">return</span> <span class="n">get_rds_resource_id</span><span class="p">(</span><span class="n">resource</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="rds_db_snapshot_not_too_old"><a class="viewcode-back" href="../../../source/aws/aws.rds.html#aws.rds.helpers.rds_db_snapshot_not_too_old">[docs]</a><span class="k">def</span> <span class="nf">rds_db_snapshot_not_too_old</span><span class="p">(</span><span class="n">snapshot</span><span class="p">,</span> <span class="n">snapshot_created_days_ago</span><span class="o">=</span><span class="mi">365</span><span class="p">):</span>

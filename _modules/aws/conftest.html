@@ -14,6 +14,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/language_data.js"></script>
+    <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../../';</script>
@@ -40,7 +41,10 @@
           <div class="body" role="main">
             
   <h1>Source code for aws.conftest</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="pytest_configure"><a class="viewcode-back" href="../../source/aws/aws.html#aws.conftest.pytest_configure">[docs]</a><span></span><span class="k">def</span> <span class="nf">pytest_configure</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<span></span><span class="kn">from</span> <span class="nn">_pytest.config</span> <span class="kn">import</span> <span class="n">Config</span>
+
+
+<div class="viewcode-block" id="pytest_configure"><a class="viewcode-back" href="../../source/aws/aws.html#aws.conftest.pytest_configure">[docs]</a><span class="k">def</span> <span class="nf">pytest_configure</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">Config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="c1"># register custom marks for aws services</span>
     <span class="k">for</span> <span class="n">svc_name</span> <span class="ow">in</span> <span class="p">[</span>
         <span class="s2">&quot;aws&quot;</span><span class="p">,</span>

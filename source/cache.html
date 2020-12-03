@@ -14,6 +14,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/language_data.js"></script>
+    <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../';</script>
@@ -43,21 +44,21 @@
 <p>Patch for pytest cache to serialize datetime.datetime</p>
 <dl class="py function">
 <dt id="cache.json_iso_datetimes">
-<code class="sig-prename descclassname">cache.</code><code class="sig-name descname">json_iso_datetimes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cache.html#json_iso_datetimes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cache.json_iso_datetimes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cache.</code><code class="sig-name descname">json_iso_datetimes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="../_modules/cache.html#json_iso_datetimes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cache.json_iso_datetimes" title="Permalink to this definition">¶</a></dt>
 <dd><p>JSON serializer for objects not serializable by default json
 module.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="cache.json_iso_datetime_string_to_datetime">
-<code class="sig-prename descclassname">cache.</code><code class="sig-name descname">json_iso_datetime_string_to_datetime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cache.html#json_iso_datetime_string_to_datetime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cache.json_iso_datetime_string_to_datetime" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cache.</code><code class="sig-name descname">json_iso_datetime_string_to_datetime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>Any<span class="p">, </span>Any<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>Any<span class="p">, </span>Any<span class="p">]</span><a class="reference internal" href="../_modules/cache.html#json_iso_datetime_string_to_datetime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cache.json_iso_datetime_string_to_datetime" title="Permalink to this definition">¶</a></dt>
 <dd><p>JSON object hook that converts object vals from ISO datetime
 strings to python datetime.datetime`s if possible.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="cache.datetime_encode_set">
-<code class="sig-prename descclassname">cache.</code><code class="sig-name descname">datetime_encode_set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cache.html#datetime_encode_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cache.datetime_encode_set" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cache.</code><code class="sig-name descname">datetime_encode_set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">_pytest.cacheprovider.Cache</span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>int<span class="p">, </span>float<span class="p">, </span>Dict<span class="p">[</span>Any<span class="p">, </span>Any<span class="p">]</span><span class="p">, </span>Tuple<span class="p">[</span>Any<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/cache.html#datetime_encode_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cache.datetime_encode_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>save value for the given key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -74,7 +75,7 @@ like e. g. lists of dictionaries.</p></li>
 
 <dl class="py function">
 <dt id="cache.datetime_encode_get">
-<code class="sig-prename descclassname">cache.</code><code class="sig-name descname">datetime_encode_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">default</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cache.html#datetime_encode_get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cache.datetime_encode_get" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cache.</code><code class="sig-name descname">datetime_encode_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">_pytest.cacheprovider.Cache</span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">default</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="../_modules/cache.html#datetime_encode_get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cache.datetime_encode_get" title="Permalink to this definition">¶</a></dt>
 <dd><p>return cached value for the given key.  If no value
 was yet cached or the value cannot be read, the specified
 default is returned.</p>
@@ -92,7 +93,7 @@ invalid cache values.</p></li>
 
 <dl class="py function">
 <dt id="cache.patch_cache_set">
-<code class="sig-prename descclassname">cache.</code><code class="sig-name descname">patch_cache_set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cache.html#patch_cache_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cache.patch_cache_set" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cache.</code><code class="sig-name descname">patch_cache_set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span><span class="p">:</span> <span class="n">_pytest.config.Config</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/cache.html#patch_cache_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cache.patch_cache_set" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>

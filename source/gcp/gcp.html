@@ -14,6 +14,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/language_data.js"></script>
+    <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="gcp.bigquery package" href="gcp.bigquery.html" />
@@ -103,7 +104,14 @@
 <dl class="py function">
 <dt id="gcp.client.cache_key">
 <code class="sig-prename descclassname">gcp.client.</code><code class="sig-name descname">cache_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">project_id</span></em>, <em class="sig-param"><span class="n">version</span></em>, <em class="sig-param"><span class="n">product</span></em>, <em class="sig-param"><span class="n">subproduct</span></em>, <em class="sig-param"><span class="n">call</span><span class="o">=</span><span class="default_value">'list'</span></em>, <em class="sig-param"><span class="n">id_value</span><span class="o">=</span><span class="default_value">'na'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/gcp/client.html#cache_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gcp.client.cache_key" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the fullname (directory and filename) for a cached GCP API call.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cache_key</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="s2">&quot;v1&quot;</span><span class="p">,</span> <span class="s2">&quot;compute&quot;</span><span class="p">,</span> <span class="s2">&quot;firewalls&quot;</span><span class="p">)</span>
+<span class="go">&#39;pytest_gcp/123/v1/compute/firewalls/list:na.json&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cache_key</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="s2">&quot;v1&quot;</span><span class="p">,</span> <span class="s2">&quot;compute&quot;</span><span class="p">,</span> <span class="s2">&quot;firewalls&quot;</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;321&quot;</span><span class="p">)</span>
+<span class="go">&#39;pytest_gcp/123/v1/compute/firewalls/get:321.json&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt id="gcp.client.get_all_projects_in_folder">

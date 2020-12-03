@@ -14,6 +14,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/language_data.js"></script>
+    <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../../';</script>
@@ -51,12 +52,16 @@
 
 
 <div class="viewcode-block" id="cache_key"><a class="viewcode-back" href="../../source/gcp/gcp.html#gcp.client.cache_key">[docs]</a><span class="k">def</span> <span class="nf">cache_key</span><span class="p">(</span><span class="n">project_id</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">subproduct</span><span class="p">,</span> <span class="n">call</span><span class="o">=</span><span class="s2">&quot;list&quot;</span><span class="p">,</span> <span class="n">id_value</span><span class="o">=</span><span class="s2">&quot;na&quot;</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span>
-        <span class="s2">&quot;:&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="p">[</span><span class="s2">&quot;pytest_gcp&quot;</span><span class="p">,</span> <span class="n">project_id</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">subproduct</span><span class="p">,</span> <span class="n">call</span><span class="p">,</span> <span class="n">id_value</span><span class="p">]</span>
-        <span class="p">)</span>
-        <span class="o">+</span> <span class="s2">&quot;.json&quot;</span>
-    <span class="p">)</span></div>
+    <span class="sd">&quot;&quot;&quot;Returns the fullname (directory and filename) for a cached GCP API call.</span>
+
+<span class="sd">    &gt;&gt;&gt; cache_key(&quot;123&quot;, &quot;v1&quot;, &quot;compute&quot;, &quot;firewalls&quot;)</span>
+<span class="sd">    &#39;pytest_gcp/123/v1/compute/firewalls/list:na.json&#39;</span>
+<span class="sd">    &gt;&gt;&gt; cache_key(&quot;123&quot;, &quot;v1&quot;, &quot;compute&quot;, &quot;firewalls&quot;, &quot;get&quot;, &quot;321&quot;)</span>
+<span class="sd">    &#39;pytest_gcp/123/v1/compute/firewalls/get:321.json&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;pytest_gcp&quot;</span><span class="p">,</span> <span class="n">project_id</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">subproduct</span><span class="p">])</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;:&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">call</span><span class="p">,</span> <span class="n">id_value</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;.json&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span></div>
 
 
 <div class="viewcode-block" id="get_all_projects_in_folder"><a class="viewcode-back" href="../../source/gcp/gcp.html#gcp.client.get_all_projects_in_folder">[docs]</a><span class="k">def</span> <span class="nf">get_all_projects_in_folder</span><span class="p">(</span><span class="n">folder_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>

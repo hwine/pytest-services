@@ -14,6 +14,7 @@
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/language_data.js"></script>
+    <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <script>DOCUMENTATION_OPTIONS.URL_ROOT = '../../../';</script>
@@ -174,18 +175,18 @@
 
 
 <div class="viewcode-block" id="iam_admin_mfa_devices"><a class="viewcode-back" href="../../../source/aws/aws.iam.html#aws.iam.resources.iam_admin_mfa_devices">[docs]</a><span class="k">def</span> <span class="nf">iam_admin_mfa_devices</span><span class="p">():</span>
-    <span class="s2">&quot;botocore.readthedocs.io/en/latest/reference/services/iam.html#IAM.Client.list_mfa_devices&quot;</span>
+    <span class="s2">&quot;https://botocore.readthedocs.io/en/latest/reference/services/iam.html#IAM.Client.list_mfa_devices&quot;</span>
     <span class="k">return</span> <span class="n">iam_mfa_devices</span><span class="p">(</span><span class="n">iam_admin_users</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="iam_user_login_profiles"><a class="viewcode-back" href="../../../source/aws/aws.iam.html#aws.iam.resources.iam_user_login_profiles">[docs]</a><span class="k">def</span> <span class="nf">iam_user_login_profiles</span><span class="p">():</span>
     <span class="s2">&quot;http://botocore.readthedocs.io/en/latest/reference/services/iam.html#IAM.Client.get_login_profile&quot;</span>
-    <span class="k">return</span> <span class="n">iam_login_profiles</span><span class="p">([</span><span class="n">user</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">iam_users</span><span class="p">()])</span></div>
+    <span class="k">return</span> <span class="n">iam_login_profiles</span><span class="p">(</span><span class="n">iam_users</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="iam_user_mfa_devices"><a class="viewcode-back" href="../../../source/aws/aws.iam.html#aws.iam.resources.iam_user_mfa_devices">[docs]</a><span class="k">def</span> <span class="nf">iam_user_mfa_devices</span><span class="p">():</span>
-    <span class="s2">&quot;botocore.readthedocs.io/en/latest/reference/services/iam.html#IAM.Client.list_mfa_devices&quot;</span>
-    <span class="k">return</span> <span class="n">iam_mfa_devices</span><span class="p">([</span><span class="n">user</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">iam_users</span><span class="p">()])</span></div>
+    <span class="s2">&quot;https://botocore.readthedocs.io/en/latest/reference/services/iam.html#IAM.Client.list_mfa_devices&quot;</span>
+    <span class="k">return</span> <span class="n">iam_mfa_devices</span><span class="p">(</span><span class="n">iam_users</span><span class="p">())</span></div>
 
 
 <div class="viewcode-block" id="iam_login_profiles"><a class="viewcode-back" href="../../../source/aws/aws.iam.html#aws.iam.resources.iam_login_profiles">[docs]</a><span class="k">def</span> <span class="nf">iam_login_profiles</span><span class="p">(</span><span class="n">users</span><span class="p">):</span>
@@ -205,7 +206,7 @@
 
 
 <div class="viewcode-block" id="iam_mfa_devices"><a class="viewcode-back" href="../../../source/aws/aws.iam.html#aws.iam.resources.iam_mfa_devices">[docs]</a><span class="k">def</span> <span class="nf">iam_mfa_devices</span><span class="p">(</span><span class="n">users</span><span class="p">):</span>
-    <span class="s2">&quot;botocore.readthedocs.io/en/latest/reference/services/iam.html#IAM.Client.list_mfa_devices&quot;</span>
+    <span class="s2">&quot;https://botocore.readthedocs.io/en/latest/reference/services/iam.html#IAM.Client.list_mfa_devices&quot;</span>
     <span class="k">return</span> <span class="p">[</span>
         <span class="n">botocore_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
             <span class="s2">&quot;iam&quot;</span><span class="p">,</span> <span class="s2">&quot;list_mfa_devices&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span><span class="s2">&quot;UserName&quot;</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s2">&quot;UserName&quot;</span><span class="p">]}</span>
