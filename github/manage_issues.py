@@ -8,57 +8,15 @@
 
 import argparse
 import json
-import re
 from dataclasses import dataclass
 import logging
 from pprint import pprint
 from typing import List, Optional, Sequence, Tuple
 
-# import argcomplete  # type: ignore
 
 logger = logging.getLogger(__name__)
 
 _epilog = ""
-
-# constants
-# Sample line:
-#   github/branches/test_branch_protection.py::test_required_protections[SOGH001b-admins-firefox-devtools/profiler-server.git,]
-SPEC_DECODER_RE = re.compile(
-    r"""
-    (?P<path>[^:]+):: # path
-    (?P<method>\w+)\[ # method
-    (?P<standard>[^-]+)- # assumes no hyphen in standard
-    (?P<test_name>[^-]+)- # assumes no hyphen in test_name
-    (?P<param_id>[^]]+)\]
-""",
-    re.VERBOSE,
-)
-
-# Sample lines:
-#  E   AssertionError: ERROR:SOGH003:firefox-devtools doesn't meet two factor required - required\n    assert False
-#  E   AssertionError: ERROR:SOGH001:firefox-devtools/profiler-server:master has no SOGH001b admins not restricted rule\n    assert False
-ASSERT_DECODER_RE = re.compile(
-    r"""
-    (E\s+AssertionError:)?\s*  # preamble
-    (?P<severity>[^:]+):
-    (?P<standard>[^:]+):
-    (?P<info>\S+)
-""",
-    re.VERBOSE | re.MULTILINE,
-)
-
-# Work on "info" section of branch. Example:
-#  firefox-devtools/profiler-server:master
-BRANCH_INFO_DECODER_RE = re.compile(
-    r"""
-    ^
-    (?P<owner>[^/]+)/   # repo owner
-    (?P<repo>[^:]+):     # repo name
-    (?P<branch>\S+)     # branch name
-    $
-    """,
-    re.VERBOSE,
-)
 
 
 @dataclass
@@ -79,7 +37,7 @@ def parse_action_string(name: str) -> Optional[Sequence[str]]:
     return matches.groups() if matches else None
 
 
-def infer_resource_type(path: str) -> str:
+def infer_resource_type(metadata: dict) -> str:
     """infer object type.
 
     This relies on the file system structure of the tests We currently
@@ -132,7 +90,7 @@ def create_branch_action(action_spec: dict) -> Action:
 
 
 def get_status(action_spec: dict) -> Tuple[str, str]:
-    final_status = action_spec["call"]["outcome"]
+    final_status = action_spec["value"]
     base_status = action_spec["metadata"][0]["outcome"]
     return final_status, base_status
 
@@ -142,15 +100,19 @@ def create_org_action(action_spec: dict) -> Action:
     # TODO check for outcome of xfailed (means exemption no longer needed)
     # most information comes from the (parametrized) name of the test
     test_info = action_spec["name"]
-    path, method, standard, test_name, param_id = parse_action_string(test_info)
-    org_full_name = param_id
-    summary = f"Org {org_full_name} failed {standard} {test_name}"
+    # path, method, standard, test_name, param_id = parse_action_string(test_info)
+    md = action_spec["metadata"]
+    org_full_name = md["org_name"]
+    standard_number = md["standard_number"]
+    test_name = action_spec["test_name"]
+    summary = f"Org {org_full_name} failed {standard_number} {test_name}"
     final_status, base_status = get_status(action_spec)
     action = Action(
         final_status=final_status,
         base_status=base_status,
-        owner=org_full_name,
-        standard=standard,
+        owner=md["login"],
+        # TODO add v4 id
+        standard=standard_number,
         summary=summary,
     )
     return action
@@ -161,14 +123,15 @@ def create_action_spec(action_spec: dict) -> Action:
     # do ("xpass" detection -- see GH-325)
     # full name is file_path::method[test_name-parametrize_id]
     name = action_spec["name"]
-    path, *_ = parse_action_string(name)
-    resource_type = infer_resource_type(path)
-    if resource_type == "orgs":
+    # path, *_ = parse_action_string(name)
+    test_object = action_spec["metadata"]["object"]
+    # resource_type = infer_resource_type(action_spec["metadata"])
+    if test_object == "org":
         action = create_org_action(action_spec)
-    elif resource_type == "branches":
+    elif test_object == "branche":
         action = create_branch_action(action_spec)
     else:
-        raise TypeError(f"unknown resource type '{resource_type}' from '{name}")
+        raise TypeError(f"unknown test object '{test_object}' from '{name}")
 
     return action
 
@@ -234,6 +197,7 @@ def perform_action(action: Action) -> bool:
 
 
 def parse_args():
+    # import argcomplete  # type: ignore
     parser = argparse.ArgumentParser(description=__doc__, epilog=_epilog)
     parser.add_argument("json_file", help="frost json output")
     # argcomplete.autocomplete(parser)
@@ -246,14 +210,14 @@ if __name__ == "__main__":
     args = parse_args()
 
     with open(args.json_file) as jf:
-        pytest_report = json.loads(jf.read())
+        frost_report = json.loads(jf.read())
 
-    issue_actions = pytest_report["report"]["tests"]
-    print(f"Processing {len(issue_actions)} test results")
-    for action_spec in issue_actions:
-        if action_spec["call"]["outcome"] == "passed":
+    test_results = frost_report["results"]
+    print(f"Processing {len(test_results)} test results")
+    for result in test_results:
+        if result["value"] == "passed":
             continue
-        action = create_action_spec(action_spec)
+        action = create_action_spec(result)
         # TODO integrate actual issue handling
         # print(action)
         perform_action(action)
