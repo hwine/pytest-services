@@ -26,7 +26,7 @@ setuptools.setup(
     url=SOURCE_URL,
     license="MPL2",
     packages=setuptools.find_packages(),
-    install_requires=install_requires,
+    # install_requires=install_requires,
     classifiers=[
         "Natural Language :: English",
         "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",

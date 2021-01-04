@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+from __future__ import annotations
 
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -6,7 +6,7 @@
 
 from typing import List
 
-from .retrieve_github_data import RepoBranchProtections, BranchProtectionRule
+from .helpers import BranchProtectionRule, BranchProtectionData
 from ..helpers import Criteria
 
 
@@ -23,18 +23,6 @@ optional_criteria = [
 warning_criteria = [
     Criteria("SOGH001d", "conflicts", "Conflict in Protection Rules"),
 ]
-
-
-def find_applicable_rules(
-    data: RepoBranchProtections, branch: str
-) -> List[BranchProtectionRule]:
-    result = []
-    for rule in data.protection_rules:
-        for ref_name in rule.matching_branches:
-            if branch == ref_name.branch_name:
-                result.append(rule)
-                break
-    return result
 
 
 def meets_criteria(protections: List[BranchProtectionRule], criteria: Criteria) -> bool:
@@ -54,30 +42,25 @@ def meets_criteria(protections: List[BranchProtectionRule], criteria: Criteria) 
 
 
 def validate_branch_protections(
-    data: RepoBranchProtections, branch: str, criteria: Criteria,
+    data: BranchProtectionData, criteria: Criteria,
 ) -> List[str]:
     """Validate the protections."""
 
     results = []
 
     # if the production branch is not specified, use the default name
-    if not branch:
-        branch = data.default_branch_ref
+    branch = data.key.branch_str
 
     # Multiple steps to validate - first, is the branch even covered
-    active_rules = find_applicable_rules(data, branch)
+    active_rules = data.protections
 
     if not active_rules:
         # results.append(
-        assert (
-            False
-        ), f"ERROR:SOGH001:{data.name_with_owner}:{branch} has no branch protection"
+        assert False, f"ERROR:SOGH001:{data.key!s} has no branch protection"
         # )
     else:
         # see if at least one rule matches specified criteria
-        message = (
-            f"ERROR:SOGH001:{data.name_with_owner}:{branch} has no {criteria} rule"
-        )
+        message = f"ERROR:SOGH001:{data.key!s} has no {criteria} rule"
         return meets_criteria(active_rules, criteria), message
         # vscode correctly tells me that all code below here is unreachable
         # see if at least one rule matches each criteria

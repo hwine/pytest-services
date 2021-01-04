@@ -12,70 +12,16 @@
 # - defer adding rate limiting support until needed: https://github.com/mozilla/frost/issues/426
 
 
-from conftest import github_client
-from dataclasses import dataclass
-from functools import lru_cache
 import logging
-import os
-from typing import List
-
-import pytest
-
-from sgqlc.endpoint.http import HTTPEndpoint  # noqa: I900
-import conftest
 
 logger = logging.getLogger(__name__)
 # Data to move to config
 DEFAULT_GRAPHQL_ENDPOINT = "https://api.github.com/graphql"
 
 
-# Data collection routines -- these likely should be a separate python
-# package, as they are useful outside of frost as written
-@pytest.fixture(scope="session", autouse=True)
-def gql_connection():
-    # Frost integration -- this routine controls all of our real system access,
-    # so we must honor the --offline option to support doctests
-    if not conftest.github_client.is_offline():
-        # check for all required environment variables so we can fail fast
-        # however, we only check once inside a session. This allows import
-        # of this module in other contexts, such as running doctests,
-        # without irrelevant configuration
+# Configure Frost results extraction
 
-        token = os.environ["GH_TOKEN"]
-        endpoint = HTTPEndpoint(
-            DEFAULT_GRAPHQL_ENDPOINT, {"Authorization": "bearer " + token,},
-        )
-    else:
-        endpoint = {}
-    # tack on error reporting so it's available everywhere needed
-    endpoint.report_download_errors = _report_download_errors
-    return endpoint
+from .helpers import Criteria
+from conftest import METADATA_KEYS
 
-
-def _compact_fmt(d):
-    s = []
-    for k, v in d.items():
-        if isinstance(v, dict):
-            v = _compact_fmt(v)
-        elif isinstance(v, (list, tuple)):
-            lst = []
-            for e in v:
-                if isinstance(e, dict):
-                    lst.append(_compact_fmt(e))
-                else:
-                    lst.append(repr(e))
-            s.append("{}=[{}]".format(k, ", ".join(lst)))
-            continue
-        s.append(f"{k}={v!r}")
-    return "(" + ", ".join(s) + ")"
-
-
-def _report_download_errors(errors):
-    """error handling for graphql comms."""
-    logger.error("Document contain %d errors", len(errors))
-    for i, e in enumerate(errors):
-        msg = e.pop("message")
-        extra = ""
-        if e:
-            extra = " %s" % _compact_fmt(e)
-        logger.error("Error #%d: %s%s", i + 1, msg, extra)
+METADATA_KEYS.update(Criteria.metadata_to_log())

@@ -19,6 +19,7 @@ Service Specific Code
 
    source/aws/modules.rst
    source/gcp/modules.rst
+   source/github/modules.rst
    source/gsuite/modules.rst
 
 Frost and support code

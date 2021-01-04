@@ -226,10 +226,10 @@ def _in_offline_mode() -> bool:
         if not is_offline:
             # check for a valid GH_TOKEN here so we fail during test collection
             os.environ["GH_TOKEN"]
-            endpoint = get_connection(
-                DEFAULT_GRAPHQL_ENDPOINT, os.environ.get("GH_TOKEN")
-            )
-            validate_viewer(endpoint)
+            # endpoint = get_connection(
+            #     DEFAULT_GRAPHQL_ENDPOINT, os.environ.get("GH_TOKEN")
+            # )
+            # validate_viewer(endpoint)
 
     except ImportError:
         pass

@@ -47,7 +47,7 @@ doc-build: check_venv
 	rm -rf docs/source
 	sphinx-apidoc --no-toc -o docs/source .
 	@# Add new service modules below also in docs/Source.rst
-	for module in frost aws gcp gsuite; do \
+	for module in frost aws gcp gsuite github; do \
 		sphinx-apidoc -f -o docs/source/$$module $$module ; \
 	done
 	make -C docs clean html
