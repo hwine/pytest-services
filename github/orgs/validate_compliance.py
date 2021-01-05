@@ -6,7 +6,7 @@
 
 from typing import List, Tuple
 
-from .retrieve_github_data import OrgInfo
+from .helpers import OrgData
 from ..helpers import Criteria
 
 # define the criteria we care about. Identify each critera with a string that will
@@ -20,7 +20,7 @@ optional_criteria: List[Criteria] = [
 warning_criteria: List[Criteria] = []
 
 
-def meets_criteria(org_info: OrgInfo, criteria: Criteria) -> bool:
+def meets_criteria(org_info: OrgData, criteria: Criteria) -> bool:
     met = True
     # ugly implementation for now
     if criteria.slug == "2fa":
@@ -30,7 +30,7 @@ def meets_criteria(org_info: OrgInfo, criteria: Criteria) -> bool:
     return met
 
 
-def validate_org_info(data: OrgInfo, criteria: Criteria) -> Tuple[bool, str]:
+def validate_org_info(data: OrgData, criteria: Criteria) -> Tuple[bool, str]:
     """Validate the protections."""
 
     results = []

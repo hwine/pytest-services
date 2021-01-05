@@ -4,7 +4,7 @@ from __future__ import annotations
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-from typing import List
+from typing import List, Tuple
 
 from .helpers import BranchProtectionRule, BranchProtectionData
 from ..helpers import Criteria
@@ -43,7 +43,7 @@ def meets_criteria(protections: List[BranchProtectionRule], criteria: Criteria) 
 
 def validate_branch_protections(
     data: BranchProtectionData, criteria: Criteria,
-) -> List[str]:
+) -> Tuple[(bool, str)]:
     """Validate the protections."""
 
     results = []

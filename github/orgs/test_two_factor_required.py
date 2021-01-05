@@ -8,19 +8,18 @@ from typing import Any, List
 
 import pytest
 
+from github.orgs.helpers import OrgData
 from github.orgs.validate_compliance import Criteria
-from .retrieve_github_data import get_all_org_data, OrgInfo
+from .client import get_all_org_data
 from . import validate_compliance
 
 
-@pytest.mark.parametrize("org_info", get_all_org_data(), ids=OrgInfo.idfn)
+@pytest.mark.parametrize("org_info", get_all_org_data(), ids=OrgData.idfn)
 @pytest.mark.parametrize(
     "criteria", validate_compliance.required_criteria, ids=Criteria.idfn
 )
 def test_require_2fa(
-    gql_connection: Any,
-    org_info: List[OrgInfo],
-    criteria: validate_compliance.Criteria,
+    org_info: List[OrgData], criteria: validate_compliance.Criteria,
 ) -> None:
     # we only care about orgs that exist for this criteria
     # renamed orgs or stale data cases are handled in different tests
