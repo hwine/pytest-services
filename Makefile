@@ -80,7 +80,7 @@ flake8: check_venv
 	flake8 --max-line-length 120 $(shell git ls-files | grep \.py$$)
 
 black: check_venv
-	pre-commit run black --all-files
+	( . venv/bin/activate && pre-commit run black --all-files )
 
 install: venv
 	( . venv/bin/activate && pip install -U pip && pip install -r requirements.txt && python setup.py develop && pre-commit install )
